@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react';
 import hamburgerManu from '../youtubeIcons/hamburger-menu.svg';
 import Youtube from '../youtubeIcons/youtube-logo.svg';
 import Create from '../youtubeIcons/upload.svg';
@@ -7,9 +6,6 @@ import Profile from '../youtubeIcons/profile-dp.jpg';
 import VoiceIcon from '../youtubeIcons/voice-search-icon.svg';
 import Search from '../youtubeIcons/search.svg';
 const Header = () => {
-  useEffect(() => {
-    console.log('useeffect from header');
-  }, []);
   return (
     <div className='h-14 grid grid-flow-col shadow-md items-center px-5'>
       <div className='col-span-2 flex items-center'>

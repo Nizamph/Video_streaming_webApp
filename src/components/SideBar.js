@@ -11,9 +11,9 @@ import showMore from '../youtubeIcons/show_more.svg';
 
 const SideBar = () => {
   return (
-    <div className='flex flex-col pr-3 max-h-[89vh] overflow-y-scroll scrollbar-none hover:scrollbar-thin scrollbar-thumb-gray-300 '>
+    <div className='flex w-[173rem] overflow-x-hidden flex-col max-h-[89vh] overflow-y-scroll scrollbar-none hover:scrollbar-thin scrollbar-thumb-gray-300 '>
       <div className=''>
-        <div className='w-44 h-9 flex items-center rounded-md hover:bg-gray-100'>
+        <div className='w-44 mr-24 h-9 flex items-center rounded-md hover:bg-gray-100'>
           <img
             className='h-[1.4rem] ml-3 '
             src={HomeIcon}
