@@ -1,9 +1,15 @@
 import React from 'react';
-import VideoCards from './VideoCards';
 import VideoList from './VideoList';
+import { useDispatch } from 'react-redux';
+import { openMenu } from '../reduxStore/appSlice';
+import { useEffect } from 'react';
 const VideoContainer = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(openMenu());
+  }, []);
   return (
-    <div className='m-2 ml-10 flex max- flex-wrap items-center gap-3 max-h-[80vh] overflow-y-scroll scrollbar-none hover:scrollbar-thin scrollbar-thumb-gray-300'>
+    <div className=' ml-16 w-full flex max- flex-wrap items-center gap-3 max-h-[80vh] overflow-y-scroll scrollbar-none '>
       <VideoList />
     </div>
   );

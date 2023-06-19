@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { GET_MOST_POPULAR_VIDEOS } from '../utils/constants';
 import VideoCards from './VideoCards';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 const VideoList = () => {
   const [videoList, setVideoList] = useState([]);
   console.log('videolist rendering');
@@ -18,14 +19,20 @@ const VideoList = () => {
   const fetchPopularVideos = async () => {
     const res = await fetch(GET_MOST_POPULAR_VIDEOS);
     const data = await res.json();
+    console.log('data is here', data);
     console.log(data.items);
     setVideoList(data.items);
   };
 
+  console.log('videoList', videoList);
   return (
     <>
       {videoList.map((video) => (
-        <VideoCards videos={video} />
+        <Link
+          to={`/watch?v=${video.id}`}
+          key={video.id}>
+          <VideoCards videos={video} />
+        </Link>
       ))}
     </>
   );

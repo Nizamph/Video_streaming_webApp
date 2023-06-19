@@ -5,11 +5,17 @@ import notification from '../youtubeIcons/notifications.svg';
 import Profile from '../youtubeIcons/profile-dp.jpg';
 import VoiceIcon from '../youtubeIcons/voice-search-icon.svg';
 import Search from '../youtubeIcons/search.svg';
+import { useDispatch } from 'react-redux';
+import { menuToggle } from '../reduxStore/appSlice';
 const Header = () => {
+  const dispatch = useDispatch();
+  const showSidebarHandler = () => {
+    dispatch(menuToggle());
+  };
   return (
     <div className='h-14 grid grid-flow-col shadow-md items-center px-5'>
       <div className='col-span-2 flex items-center'>
-        <button>
+        <button onClick={showSidebarHandler}>
           <img
             src={hamburgerManu}
             className='h-6'
