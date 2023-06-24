@@ -4,9 +4,9 @@ import { GET_MOST_POPULAR_VIDEOS } from '../utils/constants';
 import VideoCards from './VideoCards';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import AdCard from './AdCard';
 const VideoList = () => {
   const [videoList, setVideoList] = useState([]);
-  console.log('videolist rendering');
   useEffect(() => {
     console.log('running');
     try {
@@ -19,14 +19,12 @@ const VideoList = () => {
   const fetchPopularVideos = async () => {
     const res = await fetch(GET_MOST_POPULAR_VIDEOS);
     const data = await res.json();
-    console.log('data is here', data);
-    console.log(data.items);
     setVideoList(data.items);
   };
 
-  console.log('videoList', videoList);
   return (
     <>
+      <AdCard video={videoList[0]} />
       {videoList.map((video) => (
         <Link
           to={`/watch?v=${video.id}`}

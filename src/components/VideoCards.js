@@ -6,7 +6,6 @@ const VideoCards = ({ videos }) => {
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
 
   const videoTimeAgo = useTimeAgo(apiDate);
-  console.log(videos);
   return (
     <div
       className={`${
