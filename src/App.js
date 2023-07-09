@@ -5,11 +5,22 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import VideoContainer from './components/VideoContainer';
 import ButtonList from './components/ButtonList';
 import Watch from './components/Watch';
+import SearchPage from './components/SearchPage';
+import { useDispatch } from 'react-redux';
+import {
+  setShowSuggestion,
+  setShowSuggestionException,
+} from './reduxStore/searchSlice';
 
 const appRouter = createBrowserRouter([
   {
     path: '/',
-    element: <Body />,
+    element: (
+      <>
+        <Header />
+        <Body />
+      </>
+    ),
     children: [
       {
         path: '/',
@@ -24,13 +35,22 @@ const appRouter = createBrowserRouter([
         path: 'watch',
         element: <Watch />,
       },
+      {
+        path: 'results',
+        element: <SearchPage />,
+      },
     ],
   },
 ]);
 function App() {
+  const dispatch = useDispatch();
+  // const handleOnShowException = () => {
+  //   console.log('calling div from the app');
+  //   // dispatch(setShowSuggestion(false));
+  //   dispatch(setShowSuggestionException(true));
+  // };
   return (
     <div>
-      <Header />
       <RouterProvider router={appRouter}>
         <Body />
       </RouterProvider>

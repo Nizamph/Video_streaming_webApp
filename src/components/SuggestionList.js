@@ -4,19 +4,25 @@ import { useSelector, useDispatch } from 'react-redux';
 import { addCache } from '../reduxStore/searchSlice';
 import { GET_SUGGESTION_LIST } from '../utils/constants';
 import Suggestion from './Suggestion';
-const SuggestionList = ({ searchQuery, showSuggestion }) => {
+const SuggestionList = ({ searchQuery }) => {
   const [suggestionList, setSuggestionList] = useState([]);
   const dispatch = useDispatch();
   const searchCache = useSelector((store) => store.search.cache);
-  console.log('searchCache', searchCache);
+
+  const showSuggestion = useSelector((store) => store.search.showSuggestion);
+  const showSuggestionExcpetion = useSelector(
+    (store) => store.search.suggestionException
+  );
+  // console.log('searchCache', searchCache);
+
   useEffect(() => {
     const timer = setTimeout(() => {
       try {
         if (searchCache[searchQuery] !== undefined) {
-          console.log('cached data', searchCache[searchQuery]);
+          // console.log('cached data', searchCache[searchQuery]);
           let cachedData = searchCache[searchQuery];
           setSuggestionList(cachedData);
-          console.log('suggestionlist inside if', suggestionList);
+          // console.log('suggestionlist inside if', suggestionList);
         } else {
           searchSuggestions();
         }
@@ -32,9 +38,7 @@ const SuggestionList = ({ searchQuery, showSuggestion }) => {
   const searchSuggestions = async () => {
     const data = await fetch(`${GET_SUGGESTION_LIST}=${searchQuery}`);
     const searchSuggestions = await data.json();
-    console.log(searchQuery, searchSuggestions[1]);
     setSuggestionList(searchSuggestions[1]);
-    console.log('query', searchQuery, searchSuggestions[1]);
     dispatch(addCache({ [searchQuery]: searchSuggestions[1] }));
   };
   return (

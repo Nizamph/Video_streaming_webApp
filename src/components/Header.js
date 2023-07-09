@@ -5,18 +5,30 @@ import notification from '../youtubeIcons/notifications.svg';
 import Profile from '../youtubeIcons/profile-dp.jpg';
 import VoiceIcon from '../youtubeIcons/voice-search-icon.svg';
 import Search from '../youtubeIcons/search.svg';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { menuToggle } from '../reduxStore/appSlice';
 import { useState } from 'react';
 import SuggestionList from './SuggestionList';
+import {
+  setShowSuggestion,
+  setShowSuggestionException,
+} from '../reduxStore/searchSlice';
+
 const Header = () => {
   const dispatch = useDispatch();
+
   const [searchQuery, setSearchQuery] = useState('');
-  const [showSuggestion, setShowSuggestion] = useState(false);
+  const suggestionException = useSelector(
+    (store) => store.search.suggestionException
+  );
+  // const [showSuggestion, setShowSuggestion] = useState(false);
   const showSidebarHandler = () => {
     dispatch(menuToggle());
   };
 
+  const onBlurHandler = () => {
+    setShowSuggestion(true);
+  };
   return (
     <div className='py-2 grid grid-flow-col shadow-md items-center px-5'>
       <div className='col-span-1 flex items-center'>
@@ -41,8 +53,8 @@ const Header = () => {
             placeholder='Search..'
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            onFocus={() => setShowSuggestion(true)}
-            onBlur={() => setShowSuggestion(false)}
+            onFocus={() => dispatch(setShowSuggestion(true))}
+            onBlur={onBlurHandler}
           />
           <button className='p-[0.30rem] px-4 border border-gray-200 mr-2 rounded-r-full '>
             <img
@@ -58,10 +70,7 @@ const Header = () => {
           </button>
         </div>
         <div>
-          <SuggestionList
-            searchQuery={searchQuery}
-            showSuggestion={showSuggestion}
-          />
+          <SuggestionList searchQuery={searchQuery} />
         </div>
       </div>
       <div className='col-span-1 flex justify-evenly'>
