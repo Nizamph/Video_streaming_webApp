@@ -7,27 +7,53 @@ import VoiceIcon from '../youtubeIcons/voice-search-icon.svg';
 import Search from '../youtubeIcons/search.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { menuToggle } from '../reduxStore/appSlice';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { setSearchContent } from '../reduxStore/searchSlice';
 import SuggestionList from './SuggestionList';
+
 import {
   setShowSuggestion,
   setShowSuggestionException,
 } from '../reduxStore/searchSlice';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
+  const searchContent = useSelector((store) => store.search.searchContent);
   const [searchQuery, setSearchQuery] = useState('');
-  const suggestionException = useSelector(
-    (store) => store.search.suggestionException
-  );
+  const valueForSearch = useSelector((store) => store.search.valueForSearch);
+  const showSuggestion = useSelector((store) => store.search.showSuggestion);
   // const [showSuggestion, setShowSuggestion] = useState(false);
+  useEffect(() => {
+    setSearchQuery(searchContent);
+  }, [searchContent]);
+
   const showSidebarHandler = () => {
     dispatch(menuToggle());
   };
 
   const onBlurHandler = () => {
     setShowSuggestion(true);
+  };
+
+  const searchHandler = (search_query) => {
+    if (search_query !== '') {
+      navigate(`/results?search_query=${search_query}`);
+      dispatch(setSearchContent(search_query));
+      localStorage.setItem('searchContent', search_query);
+    }
+  };
+
+  // console.log('search query', searchQuery);
+  const onChangeHandler = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  console.log('searchContent from header', searchContent);
+
+  const onFocusHandler = () => {
+    dispatch(setShowSuggestion(true));
   };
   return (
     <div className='py-2 grid grid-flow-col shadow-md items-center px-5'>
@@ -52,11 +78,13 @@ const Header = () => {
             type='text'
             placeholder='Search..'
             value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            onFocus={() => dispatch(setShowSuggestion(true))}
+            onChange={onChangeHandler}
+            onFocus={onFocusHandler}
             onBlur={onBlurHandler}
           />
-          <button className='p-[0.30rem] px-4 border border-gray-200 mr-2 rounded-r-full '>
+          <button
+            className='p-[0.30rem] px-4 border border-gray-200 mr-2 rounded-r-full '
+            onClick={() => searchHandler(searchQuery)}>
             <img
               src={Search}
               className='h-6'

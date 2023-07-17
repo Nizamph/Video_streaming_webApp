@@ -15,6 +15,7 @@ const Suggestion = ({ suggestion }) => {
   // const showSuggestion = useSelector((store) => store.search.showSuggestion);
 
   const searchHandler = () => {
+    localStorage.setItem('searchContent', suggestion);
     dispatch(setSearchContent(suggestion));
     navigate(`/results?search_query=${suggestion}`);
   };
@@ -24,9 +25,6 @@ const Suggestion = ({ suggestion }) => {
     dispatch(setShowSuggestionException(true));
   };
 
-  // useEffect(() => {
-  //   dispatch(setShowSuggestionException(true));
-  // }, []);
   return (
     <div
       onClick={handleExcludedArea}

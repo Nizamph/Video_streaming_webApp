@@ -3,12 +3,12 @@ import Profile from '../youtubeIcons/profile-dp.jpg';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { GOOGLE_API_KEY } from '../utils/constants';
+import { useSearchParams } from 'react-router-dom';
 import useGetChannelDetails from '../utils/useGetChannelDetails';
+
 const SearchCard = ({ searchContent }) => {
   const { channelDp } = useGetChannelDetails(searchContent?.snippet?.channelId);
-  console.log(searchContent);
-  console.log('channel dp is here', searchContent?.snippet?.channelId);
-  console.log('channel dp is here', channelDp);
+
   return (
     <div className='flex gap-3 mt-2'>
       <div className='w-5/12'>

@@ -27,7 +27,7 @@ const Body = () => {
       className='flex m-2 w-100% overflow-x-hidden'
       onClick={handleOnShowException}>
       {showSidebar && <SideBar />}
-      <div className='w-11/12'>
+      <div className='w-full'>
         <Outlet />
       </div>
     </div>

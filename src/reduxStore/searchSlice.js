@@ -4,9 +4,10 @@ const searchSlice = createSlice({
   name: 'search',
   initialState: {
     cache: {},
-    searchContent: '',
+    searchContent: localStorage.getItem('searchContent'),
     showSuggestion: false,
     suggestionException: false,
+    valueForSearch: '',
   },
   reducers: {
     addCache: (state, action) => {

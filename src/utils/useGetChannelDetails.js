@@ -1,11 +1,15 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import { GOOGLE_API_KEY } from './constants';
+import { useSelector } from 'react-redux';
 const useGetChannelDetails = (channelId) => {
   const [videoDetails, setDetails] = useState({});
+  const search_query = useSelector((store) => store.search.searchContent);
+  console.log('search query is here', search_query);
   useEffect(() => {
+    console.log('useEffect is running');
     fetchChannelDetails();
-  }, []);
+  }, [search_query, channelId]);
 
   const fetchChannelDetails = async () => {
     if (channelId) {

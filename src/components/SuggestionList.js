@@ -45,10 +45,10 @@ const SuggestionList = ({ searchQuery }) => {
     <>
       {showSuggestion && suggestionList?.length > 0 && (
         <div className=' flex-col items-center absolute bg-white m-2 p-2 px-3 w-[32.55%] rounded-lg'>
-          {suggestionList?.map((suggestion) => {
+          {suggestionList?.map((suggestion, i) => {
             return (
               <Suggestion
-                key={Math.random()}
+                key={i}
                 suggestion={suggestion}
               />
             );
