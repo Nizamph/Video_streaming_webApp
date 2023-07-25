@@ -22,7 +22,7 @@ const SearchCardList = () => {
   const getSearchVidoes = async () => {
     if (searchQuery !== '') {
       const res = await fetch(
-        `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=${searchQuery}&type=video&key=${GOOGLE_API_KEY}`
+        `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=${searchQuery}&type=video${GOOGLE_API_KEY}`
       );
       const searchVideos = await res.json();
       console.log(searchVideos);

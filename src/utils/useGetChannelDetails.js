@@ -15,7 +15,7 @@ const useGetChannelDetails = (channelId) => {
     if (channelId) {
       console.log('fetching channel detials');
       const res = await fetch(
-        `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${channelId}&key=${GOOGLE_API_KEY}`
+        `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${channelId}${GOOGLE_API_KEY}`
       );
       const details = await res.json();
       console.log('detials from channelDetails', details);

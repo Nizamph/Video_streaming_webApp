@@ -7,10 +7,12 @@ import ButtonList from './components/ButtonList';
 import Watch from './components/Watch';
 import SearchPage from './components/SearchPage';
 import { useDispatch } from 'react-redux';
+import Shimmer from './components/Shimmer';
 import {
   setShowSuggestion,
   setShowSuggestionException,
 } from './reduxStore/searchSlice';
+import ShimmerList from './components/ShimmerList';
 
 const appRouter = createBrowserRouter([
   {
@@ -40,6 +42,10 @@ const appRouter = createBrowserRouter([
         element: <SearchPage />,
       },
     ],
+  },
+  {
+    path: '/shimmer',
+    element: <ShimmerList />,
   },
 ]);
 function App() {

@@ -2,11 +2,14 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const videoSlice = createSlice({
   name: 'video',
-  initialState: { videos: [] },
+  initialState: { videoList: [] },
   reducers: {
     addVideos: (state, action) => {
-      state.videos.splice(20, 1);
-      state.videos = [...state.videos, action.payload];
+      // state.videoList.splice(50, 1);
+      if (state.videoList.length >= 50) {
+        state.videoList.splice(0, 4);
+      }
+      state.videoList = [...state.videoList, ...action.payload];
     },
   },
 });

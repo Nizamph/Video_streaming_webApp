@@ -24,7 +24,7 @@ const Body = () => {
   console.log('exception is here inside the body', suggestionException);
   return (
     <div
-      className='flex m-2 w-100% overflow-x-hidden'
+      className='flex m-2'
       onClick={handleOnShowException}>
       {showSidebar && <SideBar />}
       <div className='w-full'>

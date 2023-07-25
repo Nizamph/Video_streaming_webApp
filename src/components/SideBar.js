@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import HomeIcon from '../youtubeIcons/home.svg';
 import Subscription from '../youtubeIcons/subscriptions.svg';
 import history from '../youtubeIcons/history-line-icon.svg';
@@ -8,10 +8,16 @@ import yourVideos from '../youtubeIcons/your_video.svg';
 import watchLater from '../youtubeIcons/watch-later.svg';
 import yourClips from '../youtubeIcons/scissors-icon.svg';
 import showMore from '../youtubeIcons/show_more.svg';
-
+import { useLocation } from 'react-router-dom';
 const SideBar = () => {
+  const location = useLocation();
+
+  console.log('myCurrentLocation', location);
   return (
-    <div className='flex w-52 overflow-x-hidden flex-col max-h-[89vh] overflow-y-scroll scrollbar-none hover:scrollbar-thin scrollbar-thumb-gray-300 absolute z-20 bg-white'>
+    <div
+      className={`flex w-52 overflow-x-hidden flex-col max-h-[89vh] overflow-y-scroll scrollbar-none hover:scrollbar-thin scrollbar-thumb-gray-300 ${
+        location.pathname !== '/' ? 'absolute z-20' : ''
+      } bg-white`}>
       <div className=''>
         <div className='w-44 mr-24 h-9 flex items-center rounded-md hover:bg-gray-100'>
           <img
