@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { GOOGLE_API_KEY } from './constants';
 import { useSelector } from 'react-redux';
 const useGetChannelDetails = (channelId) => {
+  console.log('channelid', channelId);
   const [videoDetails, setDetails] = useState({});
   const search_query = useSelector((store) => store.search.searchContent);
   console.log('search query is here', search_query);

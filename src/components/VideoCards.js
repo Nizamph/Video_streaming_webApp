@@ -1,11 +1,18 @@
 import { useTimeAgo } from '../utils/useTimeAgo';
-import Profile from '../youtubeIcons/profile-dp.jpg';
+import dummyDp from '../youtubeIcons/blank-profile-picture-gec5b7f001_1280.png';
 import { useSelector } from 'react-redux';
+import useCountAbbrevation from '../utils/useCountAbbrevation';
+import useGetChannelDetails from '../utils/useGetChannelDetails';
 const VideoCards = ({ videos }) => {
   const apiDate = videos?.snippet?.publishedAt;
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
-
-  const videoTimeAgo = useTimeAgo(apiDate);
+  const { viewCount } = videos?.statistics;
+  const viewCountAbbrevation = useCountAbbrevation(viewCount);
+  const timeAbbrevation = useTimeAgo(apiDate);
+  const { channelId } = videos?.snippet;
+  console.log('channelId from videoCards', channelId);
+  const { channelDp } = useGetChannelDetails(channelId);
+  console.log('channel Dp from video', channelDp);
   return (
     <div
       className={`${
@@ -19,7 +26,7 @@ const VideoCards = ({ videos }) => {
       <div className='flex'>
         <div className='pr-3 w-1/3'>
           <img
-            src={Profile}
+            src={channelDp}
             className='rounded-full h-10 object-fill  mt-3'
             alt='Profile'
           />
@@ -30,33 +37,9 @@ const VideoCards = ({ videos }) => {
           </p>
           <p className='text-sm'>{videos?.snippet?.channelTitle}</p>
           <div className='text-sm flex '>
-            <div>{videos?.statistics?.viewCount} views</div>
+            <div>{viewCountAbbrevation} views</div>
             <div className='w-1 h-1 mt-2 m-1 bg-slate-900 rounded-full'></div>
-            <div>
-              {videoTimeAgo.seconds > 0
-                ? `${videoTimeAgo.seconds} second${
-                    videoTimeAgo.seconds !== 1 ? 's' : ''
-                  } ago`
-                : videoTimeAgo.minutes > 0
-                ? `${videoTimeAgo.minutes} minute${
-                    videoTimeAgo.minutes !== 1 ? 's' : ''
-                  } ago`
-                : videoTimeAgo.hours > 0
-                ? `${videoTimeAgo.hours} hour${
-                    videoTimeAgo.hours !== 1 ? 's' : ''
-                  } ago`
-                : videoTimeAgo.days > 0
-                ? `${videoTimeAgo.days} day${
-                    videoTimeAgo.days !== 1 ? 's' : ''
-                  } ago`
-                : videoTimeAgo.months > 0
-                ? `${videoTimeAgo.months} month${
-                    videoTimeAgo.months !== 1 ? 's' : ''
-                  } ago`
-                : `${videoTimeAgo.years} year${
-                    videoTimeAgo.years !== 1 ? 's' : ''
-                  } ago`}
-            </div>
+            <div>{timeAbbrevation}</div>
           </div>
         </div>
       </div>

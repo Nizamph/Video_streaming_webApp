@@ -14,15 +14,13 @@ import { addVideos } from '../reduxStore/videoSlice';
 import ShimmerList from './ShimmerList';
 import Spinner from './Spinner';
 import useInfiniteLoad from '../utils/useInfiniteLoad';
+import useCountAbbrevation from '../utils/useCountAbbrevation';
 const VideoList = () => {
   // const [videoList, setVideoList] = useState([]);
-  const [pageToken, setPageToken] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [infiniteContentLoading, setInfiniteContentLoading] = useState(false);
-  const [page, setPage] = useState(1);
   const dispatch = useDispatch();
   const videoList = useSelector((store) => store.video.videoList);
   const menuOpen = useSelector((store) => store.app.isMenuOpen);
+  console.log('videoList', videoList);
 
   let infiniteApi = GET_MOST_POPULAR_VIDEOS + 10;
 

@@ -1,4 +1,4 @@
-export const GOOGLE_API_KEY = '&key=AIzaSyDs-KqVGNFyUATvuGe2TlZ8CThTRYbGRGs';
+export const GOOGLE_API_KEY = '&key=AIzaSyAmX3J37XrbhTGDKi1LSvFwOsmVJ9Y_jrg';
 // AIzaSyAmX3J37XrbhTGDKi1LSvFwOsmVJ9Y_jrg
 export const REGION_CODE = '&regionCode=IN';
 

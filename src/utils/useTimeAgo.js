@@ -41,6 +41,23 @@ export const useTimeAgo = (apiTimeData) => {
       setvideoTimeAgo({ ...videoTimeAgo, years });
     }
   }, [apiTimeData]);
-
-  return videoTimeAgo;
+  let timeAbbrevation =
+    videoTimeAgo?.seconds > 0
+      ? `${videoTimeAgo.seconds} second${
+          videoTimeAgo.seconds !== 1 ? 's' : ''
+        } ago`
+      : videoTimeAgo.minutes > 0
+      ? `${videoTimeAgo.minutes} minute${
+          videoTimeAgo.minutes !== 1 ? 's' : ''
+        } ago`
+      : videoTimeAgo.hours > 0
+      ? `${videoTimeAgo.hours} hour${videoTimeAgo.hours !== 1 ? 's' : ''} ago`
+      : videoTimeAgo.days > 0
+      ? `${videoTimeAgo.days} day${videoTimeAgo.days !== 1 ? 's' : ''} ago`
+      : videoTimeAgo.months > 0
+      ? `${videoTimeAgo.months} month${
+          videoTimeAgo.months !== 1 ? 's' : ''
+        } ago`
+      : `${videoTimeAgo.years} year${videoTimeAgo.years !== 1 ? 's' : ''} ago`;
+  return timeAbbrevation;
 };
