@@ -33,8 +33,9 @@ const Header = () => {
     dispatch(menuToggle());
   };
 
-  const onBlurHandler = () => {
+  const onBlurHandler = (e) => {
     setShowSuggestion(true);
+    e.stopPropagation();
   };
 
   const searchHandler = (search_query) => {
@@ -48,15 +49,24 @@ const Header = () => {
   // console.log('search query', searchQuery);
   const onChangeHandler = (e) => {
     setSearchQuery(e.target.value);
+    e.stopPropagation();
   };
 
   console.log('searchContent from header', searchContent);
 
-  const onFocusHandler = () => {
+  const onFocusHandler = (e) => {
     dispatch(setShowSuggestion(true));
+    e.stopPropagation();
+  };
+
+  const handleOnShowException = (e) => {
+    console.log('calling div from the header ');
+    dispatch(setShowSuggestion(false));
   };
   return (
-    <div className='py-2 grid grid-flow-col shadow-md items-center px-5'>
+    <div
+      className='py-2 grid grid-flow-col shadow-md items-center px-5'
+      onClick={(e) => handleOnShowException(e)}>
       <div className='col-span-1 flex items-center'>
         <button onClick={showSidebarHandler}>
           <img
@@ -72,15 +82,17 @@ const Header = () => {
         />
       </div>
       <div>
-        <div className='flex col-span-8 justify-center items-center mr-7'>
+        <div
+          className='flex col-span-8 justify-center items-center mr-7'
+          onClick={(e) => e.stopPropagation()}>
           <input
             className='w-4/5 h-9 border pl-3 p-2 border-gray-300 rounded-l-full'
             type='text'
             placeholder='Search..'
             value={searchQuery}
             onChange={onChangeHandler}
-            onFocus={onFocusHandler}
-            onBlur={onBlurHandler}
+            onFocus={(e) => onFocusHandler(e)}
+            onBlur={(e) => onBlurHandler(e)}
           />
           <button
             className='p-[0.30rem] px-4 border border-gray-200 mr-2 rounded-r-full '

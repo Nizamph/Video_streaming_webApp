@@ -18,7 +18,7 @@ const ChatList = () => {
           image: demoProfile,
         })
       );
-    }, 2000);
+    }, 1000);
 
     return () => {
       clearInterval(id);

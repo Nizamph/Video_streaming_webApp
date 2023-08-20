@@ -10,7 +10,7 @@ const useGetChannelDetails = (channelId) => {
   useEffect(() => {
     console.log('useEffect is running');
     fetchChannelDetails();
-  }, [search_query, channelId]);
+  }, [channelId]);
 
   const fetchChannelDetails = async () => {
     if (channelId) {

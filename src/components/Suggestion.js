@@ -17,12 +17,12 @@ const Suggestion = ({ suggestion }) => {
   const searchHandler = () => {
     localStorage.setItem('searchContent', suggestion);
     dispatch(setSearchContent(suggestion));
+    dispatch(setShowSuggestion(false));
     navigate(`/results?search_query=${suggestion}`);
   };
 
   const handleExcludedArea = () => {
     console.log('clicking');
-    dispatch(setShowSuggestionException(true));
   };
 
   return (

@@ -52,8 +52,7 @@ function App() {
   const dispatch = useDispatch();
   // const handleOnShowException = () => {
   //   console.log('calling div from the app');
-  //   // dispatch(setShowSuggestion(false));
-  //   dispatch(setShowSuggestionException(true));
+  //   dispatch(setShowSuggestion(false));
   // };
   return (
     <div>

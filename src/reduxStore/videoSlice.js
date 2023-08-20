@@ -7,9 +7,9 @@ const videoSlice = createSlice({
     addVideos: (state, action) => {
       // state.videoList.splice(50, 1);
       console.log('actionPayload from videoSlice', action.payload);
-      // if (state.videoList.length >= 50) {
-      //   state.videoList.splice(0, 4);
-      // }
+      if (action.payload && state.videoList.length >= 100) {
+        state.videoList.splice(0, 3);
+      }
       if (action.payload) {
         state.videoList = [...state.videoList, ...action.payload];
       }

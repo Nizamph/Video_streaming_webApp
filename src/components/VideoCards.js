@@ -13,6 +13,8 @@ const VideoCards = ({ videos }) => {
   console.log('channelId from videoCards', channelId);
   const { channelDp } = useGetChannelDetails(channelId);
   console.log('channel Dp from video', channelDp);
+  let shortVideoTitle =
+    videos?.snippet?.localized?.title?.split('').slice(0, 50).join('') + '...';
   return (
     <div
       className={`${
@@ -32,9 +34,7 @@ const VideoCards = ({ videos }) => {
           />
         </div>
         <div className='flex flex-col'>
-          <p className='text-md font-bold p-2'>
-            {videos?.snippet?.localized?.title}
-          </p>
+          <p className='text-md font-bold p-2'>{shortVideoTitle}</p>
           <p className='text-sm'>{videos?.snippet?.channelTitle}</p>
           <div className='text-sm flex '>
             <div>{viewCountAbbrevation} views</div>

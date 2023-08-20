@@ -5,7 +5,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { closeMenu } from '../reduxStore/appSlice';
 import CommentContainer from './CommentContainer';
 import LiveChat from './LiveChat';
-import { RELATED_VIDEOS, SINGLE_VIDEO_DETAILS } from '../utils/constants';
+import {
+  RELATED_VIDEOS,
+  SINGLE_VIDEO_DETAILS,
+  REGION_CODE,
+} from '../utils/constants';
 import { GOOGLE_API_KEY } from '../utils/constants';
 import displayPic from '../youtubeIcons/blank-profile-picture-gec5b7f001_1280.png';
 import Like from '../youtubeIcons/like.jpg';
@@ -50,9 +54,7 @@ const Watch = () => {
   }, []);
 
   const relatedVideosList = async () => {
-    let res = await fetch(
-      `${RELATED_VIDEOS}${videoId}&type=video${GOOGLE_API_KEY}`
-    );
+    let res = await fetch(RELATED_VIDEOS + 10 + REGION_CODE + GOOGLE_API_KEY);
     const relatedVideos = await res.json();
     console.log('relatedVideos ', relatedVideos);
     setRelatedVideos(relatedVideos.items);
