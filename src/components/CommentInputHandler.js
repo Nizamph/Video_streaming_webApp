@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import displayPic from '../youtubeIcons/blank-profile-picture-gec5b7f001_1280.png';
 
-const CommentInputHandler = () => {
+const CommentInputHandler = ({ getCommentText }) => {
   const [disable, setDisable] = useState(true);
   const [isCommentFocussed, setIsCommentFocused] = useState(false);
   const [typeComment, setTypeComment] = useState('');
@@ -12,6 +12,12 @@ const CommentInputHandler = () => {
       setDisable(true);
     }
   }, [typeComment]);
+
+  const commentSubmitHandler = () => {
+    getCommentText(typeComment);
+    setTypeComment('');
+    setIsCommentFocused(false);
+  };
   return (
     <>
       <div className='flex justify-start'>
@@ -22,6 +28,7 @@ const CommentInputHandler = () => {
         />
         <input
           type='text'
+          value={typeComment}
           className={` border-b-2 pl-2  ${
             isCommentFocussed ? 'focus:outline-none' : ''
           } border-gray-400 w-full`}
@@ -41,6 +48,7 @@ const CommentInputHandler = () => {
           <button
             type='button'
             disabled={disable}
+            onClick={commentSubmitHandler}
             className={`p-2  text-sm px-3 m-2 ${
               disable ? 'bg-slate-100' : 'bg-blue-600 text-white'
             }  rounded-full`}>

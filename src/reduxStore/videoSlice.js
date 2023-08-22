@@ -1,8 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
-
+import {
+  GET_MOST_POPULAR_VIDEO,
+  GET_MOST_POPULAR_VIDEOS,
+} from '../utils/constants';
 const videoSlice = createSlice({
   name: 'video',
-  initialState: { videoList: [], relatedVideos: [] },
+  initialState: {
+    videoList: [],
+    relatedVideos: [],
+    videoTypeApi: GET_MOST_POPULAR_VIDEOS,
+  },
   reducers: {
     addVideos: (state, action) => {
       // state.videoList.splice(50, 1);
@@ -14,6 +21,9 @@ const videoSlice = createSlice({
         state.videoList = [...state.videoList, ...action.payload];
       }
     },
+    removeAllVideos: (state) => {
+      state.videoList = [];
+    },
     addRelatedVideos: (state, action) => {
       if (state.relatedVideos.length >= 50) {
         state.videoList.splice(0, 4);
@@ -22,9 +32,12 @@ const videoSlice = createSlice({
         state.relatedVideos = [...state.relatedVideos, ...action.payload];
       }
     },
+    addVideoApi: (state, action) => {
+      state.videoTypeApi = action.payload;
+    },
   },
 });
 
 export default videoSlice.reducer;
 
-export const { addVideos } = videoSlice.actions;
+export const { addVideos, addVideoApi, removeAllVideos } = videoSlice.actions;

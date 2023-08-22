@@ -7,10 +7,11 @@ const useGetVideoDetails = (videoId) => {
     getVideoDetails();
   }, [videoId]);
   const getVideoDetails = async () => {
-    let res = await fetch(SINGLE_VIDEO_DETAILS + videoId + GOOGLE_API_KEY);
-    let videoDetails = await res.json();
-    console.log('details', videoDetails);
-    setSingleVideoDetails(videoDetails.items);
+    if (videoId !== null) {
+      let res = await fetch(SINGLE_VIDEO_DETAILS + videoId + GOOGLE_API_KEY);
+      let videoDetails = await res.json();
+      setSingleVideoDetails(videoDetails.items);
+    }
   };
 
   return singleVideoDetails;

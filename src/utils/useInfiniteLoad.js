@@ -32,11 +32,9 @@ const useInfiniteLoad = (infinteApi, addVideos) => {
       setShimmerLoading(true);
       const res = await fetch(infinteApi + REGION_CODE + GOOGLE_API_KEY);
       const data = await res.json();
-      console.log('data from useInfinite scroll', data);
+
       setShimmerLoading(false);
       const { nextPageToken } = data;
-
-      console.log('nextVideoKeys', nextPageToken);
 
       dispatch(addVideos(data.items));
       setNewPageToken(`&pageToken=${nextPageToken}`);
@@ -48,7 +46,7 @@ const useInfiniteLoad = (infinteApi, addVideos) => {
     } catch (err) {
       console.log(err);
     }
-  }, [page]);
+  }, [page, infinteApi]);
 
   const handleScrollEventHandler = () => {
     if (

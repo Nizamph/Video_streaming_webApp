@@ -24,10 +24,10 @@ const Body = () => {
   console.log('exception is here inside the body', suggestionException);
   return (
     <div
-      className='flex m-2'
+      className='flex mx-2'
       onClick={handleOnShowException}>
       {showSidebar && <SideBar />}
-      <div className='w-full'>
+      <div className='w-full mt-14'>
         <Outlet />
       </div>
     </div>

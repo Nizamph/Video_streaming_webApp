@@ -20,44 +20,59 @@ const VideoList = () => {
   const dispatch = useDispatch();
   const videoList = useSelector((store) => store.video.videoList);
   const menuOpen = useSelector((store) => store.app.isMenuOpen);
-  console.log('videoList', videoList);
-
-  let infiniteApi = GET_MOST_POPULAR_VIDEOS + 10;
+  const getVideoApi = useSelector((store) => store.video.videoTypeApi);
+  console.log('getvidoeApi', getVideoApi);
 
   const { infiniteLoading, shimmerLoading } = useInfiniteLoad(
-    infiniteApi,
+    getVideoApi,
     addVideos
   );
-
+  console.log('videoList os here', videoList);
   return (
     <>
       {shimmerLoading ? (
         <div
-          className={`grid ${
-            menuOpen ? 'grid-cols-3 gap-2' : 'grid-cols-4 gap-1'
-          }`}>
+          className='grid
+           grid-cols-4 gap-1
+          '>
           {ShimmerList(10)}
         </div>
       ) : infiniteLoading ? (
         <>
-          {videoList?.map((video) => (
+          {videoList?.map((video) =>
+            video?.id?.videoId ? (
+              <Link
+                to={`/watch?v=${video?.id?.videoId}`}
+                key={video?.id?.videoId}>
+                <VideoCards videos={video} />
+              </Link>
+            ) : (
+              <Link
+                to={`/watch?v=${video?.id}`}
+                key={video?.id}>
+                <VideoCards videos={video} />
+              </Link>
+            )
+          )}
+          {ShimmerList(6)}
+          <Spinner />
+        </>
+      ) : (
+        videoList?.map((video) =>
+          video?.id?.videoId ? (
+            <Link
+              to={`/watch?v=${video?.id?.videoId}`}
+              key={video?.id?.videoId}>
+              <VideoCards videos={video} />
+            </Link>
+          ) : (
             <Link
               to={`/watch?v=${video?.id}`}
               key={video?.id}>
               <VideoCards videos={video} />
             </Link>
-          ))}
-          {ShimmerList(6)}
-          <Spinner />
-        </>
-      ) : (
-        videoList?.map((video) => (
-          <Link
-            to={`/watch?v=${video?.id}`}
-            key={video?.id}>
-            <VideoCards videos={video} />
-          </Link>
-        ))
+          )
+        )
       )}
     </>
   );

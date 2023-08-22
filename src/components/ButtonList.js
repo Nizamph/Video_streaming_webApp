@@ -1,20 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from './Button';
+import { BUTTON_NAMES } from '../utils/constants';
 const ButtonList = () => {
-  let buttons = [
-    'All',
-    'Gaming',
-    'Music',
-    'Mixes',
-    'React',
-    'Cinema',
-    'Comedy',
-    'Cricket',
-    'Film',
-    'Computer programming',
-    'Namaste React',
-    'Namaste Javascript',
-  ];
+  const [buttons, setButtons] = useState(BUTTON_NAMES);
   return (
     <div className='flex'>
       {buttons.map((btnName, index) => (

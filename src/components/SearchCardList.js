@@ -25,7 +25,7 @@ const SearchCardList = () => {
         `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=${searchQuery}&type=video${GOOGLE_API_KEY}`
       );
       const searchVideos = await res.json();
-      console.log(searchVideos);
+      console.log('searched videos', searchVideos);
       setSearchContents(searchVideos.items);
     }
   };

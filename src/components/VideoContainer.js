@@ -9,7 +9,7 @@ const VideoContainer = () => {
     dispatch(openMenu());
   }, []);
   return (
-    <div className=' ml-16 flex  flex-wrap items-center gap-3 max-h-[80vh] '>
+    <div className=' ml-16 flex  flex-wrap gap-3 h-full '>
       <VideoList />
     </div>
   );

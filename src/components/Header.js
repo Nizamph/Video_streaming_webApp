@@ -65,7 +65,7 @@ const Header = () => {
   };
   return (
     <div
-      className='py-2 grid grid-flow-col shadow-md items-center px-5'
+      className='py-2 grid grid-flow-col w-full shadow-md px-4 fixed z-20 bg-white'
       onClick={(e) => handleOnShowException(e)}>
       <div className='col-span-1 flex items-center'>
         <button onClick={showSidebarHandler}>

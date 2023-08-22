@@ -13,7 +13,7 @@ const CommentContainer = () => {
   const dispatch = useDispatch();
   const [comments, setComments] = useState(commentData);
   const isModalShow = useSelector((store) => store.comment.showCommentModal);
-  const { deleteNode } = useTraverseTree();
+  const { deleteNode, insertNode } = useTraverseTree();
   const onDeleteHandler = () => {
     console.log('delete comment Id', deletCommentId);
     let dataAfterDelete = deleteNode(commentData, deletCommentId);
@@ -22,11 +22,26 @@ const CommentContainer = () => {
     setComments(dataAfterDelete);
     dispatch(setShowCommentModal(false));
   };
+
+  const getInputComment = (value) => {
+    console.log('value from the input handler', value);
+    setComments((prevState) => {
+      return [
+        {
+          id: new Date().getTime(),
+          name: 'Nizam',
+          comment: value,
+          replies: [],
+        },
+        ...prevState,
+      ];
+    });
+  };
   return (
     <div className='w-full pl-2 flex flex-col justify-center relative'>
       <div className='font-bold p-1'>Comments</div>
       {isModalShow && <CommentCautionModal onClick={onDeleteHandler} />}
-      <CommentInputHandler />
+      <CommentInputHandler getCommentText={getInputComment} />
       <CommentList
         commentData={comments}
         setCommentData={setComments}

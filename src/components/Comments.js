@@ -59,6 +59,7 @@ const Comments = ({ comment, handleInsertNode, editInputComment }) => {
 
   const editSubmitHandler = () => {
     // editInputComment(comment?.id, typeComment);
+    setshowCommentDetails(true);
     dispatch(setEditDetails({ commentId: comment?.id, comment: typeComment }));
   };
 

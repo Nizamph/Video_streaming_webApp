@@ -12,11 +12,13 @@ import {
 } from '../utils/constants';
 import { GOOGLE_API_KEY } from '../utils/constants';
 import displayPic from '../youtubeIcons/blank-profile-picture-gec5b7f001_1280.png';
-import Like from '../youtubeIcons/like.jpg';
-import dislike from '../youtubeIcons/dislikeIcon.jpg';
+import Like from '../youtubeIcons/like.png';
+import dislike from '../youtubeIcons/dislike.png';
 import shareIcon from '../youtubeIcons/shareIcon.png';
 import downloadIcon from '../youtubeIcons/downloadIcon.png';
 import RelatedVideoList from './RelatedVideoList';
+import useGetChannelDetails from '../utils/useGetChannelDetails';
+import useCountAbbrevation from '../utils/useCountAbbrevation';
 const Watch = () => {
   const [searchParams] = useSearchParams();
   const dispatch = useDispatch();
@@ -59,6 +61,14 @@ const Watch = () => {
     console.log('relatedVideos ', relatedVideos);
     setRelatedVideos(relatedVideos.items);
   };
+
+  const { channelDp, subscriberCount } = useGetChannelDetails(
+    singleVideoDetails[0]?.snippet?.channelId
+  );
+
+  const abbrevatedSubscribeCount = useCountAbbrevation(subscriberCount);
+
+  console.log('singleVideoDetails', singleVideoDetails);
   return (
     <div className='flex items-start justify-evenly ml-7'>
       <div className='flex flex-col justify-center w-[62%]'>
@@ -82,7 +92,7 @@ const Watch = () => {
         <div className='flex gap-2 justify-between pl-5 w-full items-center'>
           <div className='flex gap-3 items-center w-full'>
             <img
-              src={displayPic}
+              src={channelDp}
               alt='dp'
               className='w-9 rounded-full'
             />
@@ -90,7 +100,9 @@ const Watch = () => {
               <p className='font-semibold '>
                 {singleVideoDetails[0]?.snippet?.channelTitle}
               </p>
-              <p className='text-sm text-gray-500'>1.42M subscribers</p>
+              <p className='text-sm text-gray-500'>
+                {abbrevatedSubscribeCount} subscribers
+              </p>
             </div>
             <div>
               <button className=' p-2 px-3 bg-black text-white rounded-full'>
@@ -98,33 +110,33 @@ const Watch = () => {
               </button>
             </div>
           </div>
-          <div className='flex'>
-            <div className='flex gap-2 rounded-xl pr-2'>
-              <button>
+          <div className='flex items-center gap-2'>
+            <div className='flex  rounded-xl pr-2'>
+              <button className='p-2'>
                 <img
                   src={Like}
-                  className='w-9'
+                  className='w-36'
                 />
               </button>
-              <button>
+              <button className='p-2'>
                 <img
                   src={dislike}
-                  className='w-9'
+                  className='w-40'
                 />
               </button>
             </div>
             <div>
-              <button className='p-1 px-2 rounded-full   border border-gray-500 flex justify-center items-center'>
+              <button className='p-2 px-5 rounded-full m-2 border border-gray-500 flex gap-2 justify-center items-center'>
                 <img
                   src={shareIcon}
-                  className='w-3 '
+                  className='w-3'
                   alt='shareIcon'
                 />
-                <p className='font-semibold p-1'>Share</p>
+                <p className='font-semibold '>Share</p>
               </button>
             </div>
             <div className='pl-2'>
-              <button className='p-1 px-2 rounded-full  border border-gray-500 flex justify-center items-center'>
+              <button className='p-1 px-4 rounded-full gap-1 border border-gray-500 flex justify-center items-center'>
                 <img
                   src={downloadIcon}
                   className='w-3 '
