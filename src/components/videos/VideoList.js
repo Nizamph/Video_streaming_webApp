@@ -52,7 +52,6 @@ const VideoList = () => {
             )
           )}
           {ShimmerList(6)}
-          <Spinner />
         </>
       ) : (
         videoList?.map((video) =>
