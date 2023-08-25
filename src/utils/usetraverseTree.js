@@ -1,3 +1,4 @@
+import profilPic from '../youtubeIcons/profile-dp.jpg';
 const useTraverseTree = () => {
   function insertNode(tree, commentId, newComment) {
     if (!tree) {
@@ -11,6 +12,7 @@ const useTraverseTree = () => {
         itm.replies.unshift({
           id: new Date().getTime(),
           name: 'Nizam',
+          url: profilPic,
           comment: newComment,
           replies: [],
         });

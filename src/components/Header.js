@@ -6,11 +6,11 @@ import Profile from '../youtubeIcons/profile-dp.jpg';
 import VoiceIcon from '../youtubeIcons/voice-search-icon.svg';
 import Search from '../youtubeIcons/search.svg';
 import { useDispatch, useSelector } from 'react-redux';
-import { menuToggle } from '../reduxStore/appSlice';
+import { menuToggle, setInputClearer } from '../reduxStore/appSlice';
 import { useEffect, useState } from 'react';
 import { setSearchContent } from '../reduxStore/searchSlice';
-import SuggestionList from './SuggestionList';
-
+import SuggestionList from './suggestions/SuggestionList';
+import crossIcon from '../youtubeIcons/crossIcon.png';
 import {
   setShowSuggestion,
   setShowSuggestionException,
@@ -22,11 +22,15 @@ const Header = () => {
   const navigate = useNavigate();
   const searchContent = useSelector((store) => store.search.searchContent);
   const [searchQuery, setSearchQuery] = useState('');
+  const [showCrossBtn, setShowCrossBtn] = useState(false);
   const valueForSearch = useSelector((store) => store.search.valueForSearch);
   const showSuggestion = useSelector((store) => store.search.showSuggestion);
+  const showInputClearer = useSelector((store) => store.app.showInputClearer);
   // const [showSuggestion, setShowSuggestion] = useState(false);
   useEffect(() => {
-    setSearchQuery(searchContent);
+    if (searchContent !== null) {
+      setSearchQuery(searchContent);
+    }
   }, [searchContent]);
 
   const showSidebarHandler = () => {
@@ -39,20 +43,29 @@ const Header = () => {
   };
 
   const searchHandler = (search_query) => {
-    if (search_query !== '') {
+    if (search_query.length > 0) {
       navigate(`/results?search_query=${search_query}`);
       dispatch(setSearchContent(search_query));
+      dispatch(setShowSuggestion(false));
       localStorage.setItem('searchContent', search_query);
     }
   };
 
+  useEffect(() => {
+    if (searchQuery.length > 0) {
+      dispatch(setInputClearer(true));
+    } else {
+      dispatch(setInputClearer(false));
+    }
+  }, [searchQuery]);
+
+  console.log('inputClearer', showInputClearer);
+  console.log('searchQuery', searchQuery);
   // console.log('search query', searchQuery);
   const onChangeHandler = (e) => {
     setSearchQuery(e.target.value);
     e.stopPropagation();
   };
-
-  console.log('searchContent from header', searchContent);
 
   const onFocusHandler = (e) => {
     dispatch(setShowSuggestion(true));
@@ -63,9 +76,15 @@ const Header = () => {
     console.log('calling div from the header ');
     dispatch(setShowSuggestion(false));
   };
+
+  const clearSearchContentHandler = () => {
+    setSearchQuery('');
+    localStorage.removeItem('searchContent');
+  };
+
   return (
     <div
-      className='py-2 grid grid-flow-col w-full shadow-md px-4 fixed z-20 bg-white'
+      className='py-2 grid grid-flow-col w-full  shadow-md px-4 fixed z-20 bg-white'
       onClick={(e) => handleOnShowException(e)}>
       <div className='col-span-1 flex items-center'>
         <button onClick={showSidebarHandler}>
@@ -86,7 +105,7 @@ const Header = () => {
           className='flex col-span-8 justify-center items-center mr-7'
           onClick={(e) => e.stopPropagation()}>
           <input
-            className='w-4/5 h-9 border pl-3 p-2 border-gray-300 rounded-l-full'
+            className='w-4/5 h-9 border-l border-t border-b pl-3 p-2 border-gray-300 rounded-l-full'
             type='text'
             placeholder='Search..'
             value={searchQuery}
@@ -94,6 +113,16 @@ const Header = () => {
             onFocus={(e) => onFocusHandler(e)}
             onBlur={(e) => onBlurHandler(e)}
           />
+          {showInputClearer && (
+            <button
+              className='border-y border-gray-300'
+              onClick={clearSearchContentHandler}>
+              <img
+                src={crossIcon}
+                className='w-[37px]'
+              />
+            </button>
+          )}
           <button
             className='p-[0.30rem] px-4 border border-gray-200 mr-2 rounded-r-full '
             onClick={() => searchHandler(searchQuery)}>

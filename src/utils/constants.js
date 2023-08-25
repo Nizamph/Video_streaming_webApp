@@ -16,6 +16,26 @@ import sport from '../youtubeIcons/sportIcon.png';
 import fashion from '../youtubeIcons/fashionIcon.png';
 import news from '../youtubeIcons/newsIcon.png';
 import games from '../youtubeIcons/gamesIcon.png';
+import proPic1 from '../youtubeIcons/proPic1.jpg';
+import proPic2 from '../youtubeIcons/proPic2.jpg';
+import proPic3 from '../youtubeIcons/proPic3.jpg';
+import proPic4 from '../youtubeIcons/proPic4.jpg';
+import proPic5 from '../youtubeIcons/propic5.jpg';
+import proPic6 from '../youtubeIcons/proPic6.jpg';
+import proPic7 from '../youtubeIcons/proPic7.jpg';
+import proPic8 from '../youtubeIcons/proPic8.jpg';
+import proPic9 from '../youtubeIcons/proPic9.jpg';
+import proPic10 from '../youtubeIcons/proPic10.jpg';
+import proPic11 from '../youtubeIcons/proPic11.jpg';
+import proPic12 from '../youtubeIcons/proPic12.jpg';
+import proPic13 from '../youtubeIcons/proPic13.jpg';
+import proPic14 from '../youtubeIcons/proPic14.jpg';
+import proPic15 from '../youtubeIcons/proPic15.jpg';
+import proPic16 from '../youtubeIcons/proPic16.jpg';
+import proPic17 from '../youtubeIcons/proPic17.jpg';
+import proPic18 from '../youtubeIcons/proPic18.jpg';
+import proPic19 from '../youtubeIcons/proPic19.jpg';
+import proPic20 from '../youtubeIcons/proPic20.jpg';
 export const GOOGLE_API_KEY = '&key=AIzaSyC5l6aEWGAJHz1Efsi7m9bQ7Kskvyg4WmA';
 // AIzaSyAmX3J37XrbhTGDKi1LSvFwOsmVJ9Y_jrg
 export const REGION_CODE = '&regionCode=IN';
@@ -35,50 +55,58 @@ export const RELATED_VIDEOS =
 export const commentData = [
   {
     id: '1',
-    name: 'Nizam',
-    comment: 'lorem Ipsum dhkkg ',
+    name: 'John',
+    url: proPic4,
+    comment: 'Nice video👍 ',
     replies: [
       {
         id: '2',
-        name: 'suhai',
-        comment: 'lorem Ipsum dhkkg dkfdlf mdkfj',
+        name: 'chris',
+        url: proPic2,
+        comment: 'cant agree more',
         replies: [
           {
             id: '3',
             name: 'jasir',
-            comment: 'lorem Ipsum dhkkg dkfdlf mdkfj',
+            url: proPic3,
+            comment: 'chris have you seen this before',
             replies: [],
           },
           {
             id: '4',
-            name: 'jimbru',
-            comment: 'lorem Ipsum dhkkg dkfdlf mdkfj',
+            name: 'luther',
+            url: proPic1,
+            comment: 'chris make a video',
             replies: [],
           },
         ],
       },
       {
         id: '5',
-        name: 'Junais',
-        comment: 'lorem Ipsum dhkkg dkfdlf mdkfj',
+        name: 'rohan',
+        url: proPic5,
+        comment: 'fabulous',
         replies: [
           {
             id: '6',
-            name: 'jalal',
-            comment: 'lorem Ipsum dhkkg dkfdlf mdkfj',
+            name: 'zuan',
+            url: proPic6,
+            comment: 'i dont think so',
             replies: [
               {
                 id: '7',
                 name: 'Mubashir',
-                comment: 'lorem Ipsum dhkkg dkfdlf mdkfj',
+                url: proPic7,
+                comment: 'then go ahead and dislike it',
                 replies: [],
               },
             ],
           },
           {
             id: '8',
-            name: 'ithifaq',
-            comment: 'lorem Ipsum dhkkg dkfdlf mdkfj',
+            name: 'sabir',
+            url: proPic8,
+            comment: 'informative one✅',
             replies: [],
           },
         ],
@@ -87,47 +115,55 @@ export const commentData = [
   },
   {
     id: '9',
-    name: 'siraj',
-    comment: 'lorem Ipsum dhkkg dkfdlf mdkfj',
+    name: 'rayman',
+    url: proPic9,
+    comment: 'superb😍',
     replies: [
       {
         id: '10',
-        name: 'mubaz',
-        comment: 'lorem Ipsum dhkkg dkfdlf mdkfj',
+        name: 'Mubaz',
+        url: proPic10,
+        comment: 'what superb😍',
         replies: [],
       },
     ],
   },
   {
     id: '11',
-    name: 'rajkamal',
-    comment: 'lorem Ipsum dhkkg dkfdlf mdkfj',
+    name: 'Nevlie',
+    url: proPic11,
+    comment: 'you should have done this in a better way',
     replies: [
       {
         id: '12',
-        name: 'jazz',
-        comment: 'lorem Ipsum dhkkg dkfdlf mdkfj',
+        name: 'Jazz',
+        url: proPic12,
+        comment: 'he done pretty well ',
         replies: [
           {
             id: '13',
             name: 'mazz',
-            comment: 'lorem Ipsum dhkkg dkfdlf mdkfj',
+            url: proPic13,
+            comment: 'no i dont think so',
             replies: [
               {
                 id: '14',
-                name: 'fazz',
-                comment: 'lorem Ipsum dhkkg dkfdlf mdkfj',
+                name: 'Mubaz',
+                url: proPic10,
+                comment: 'who are you😒 ',
                 replies: [
                   {
                     id: '15',
-                    name: 'ramlal',
-                    comment: 'lorem Ipsum dhkkg dkfdlf mdkfj',
+                    name: 'Nevlie',
+                    ur: proPic11,
+                    comment: 'Nevlie once again',
                     replies: [],
                   },
                   {
                     id: '16',
                     name: 'jifri',
-                    comment: 'lorem Ipsum dhkkg dkfdlf mdkfj',
+                    url: proPic16,
+                    comment: 'jifri here🙋',
                     replies: [],
                   },
                 ],
@@ -140,21 +176,32 @@ export const commentData = [
   },
   {
     id: '17',
-    name: 'rifahath',
-    comment: 'lorem Ipsum dhkkg dkfdlf mdkfj',
+    name: 'Jack',
+    url: proPic17,
+    comment: 'fantastic🚀',
     replies: [],
   },
   {
     id: '18',
-    name: 'fuckrudheen',
-    comment: 'lorem Ipsum dhkkg dkfdlf mdkfj',
+    name: 'Ezra Rico',
+    url: proPic18,
+    comment: 'enjoyy',
     replies: [],
   },
   {
     id: '19',
-    name: 'suckiyaan',
-    comment: 'lorem Ipsum dhkkg dkfdlf mdkfj',
-    replies: [],
+    name: 'Lane',
+    url: proPic19,
+    comment: 'hello everyone',
+    replies: [
+      {
+        id: '20',
+        name: 'Ivan',
+        url: proPic20,
+        comment: 'haii everyone',
+        replies: [],
+      },
+    ],
   },
 ];
 
@@ -168,9 +215,9 @@ export let BUTTON_NAMES = [
   'Comedy',
   'Cricket',
   'Film',
-  'Computer programming',
-  'Namaste React',
-  'Namaste Javascript',
+  'Jokes',
+  'chatgpt',
+  'chandrayaan',
 ];
 
 export const sideBarMenus = [

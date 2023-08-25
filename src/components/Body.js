@@ -1,7 +1,7 @@
 import React from 'react';
-import SideBar from './SideBar';
-import VideoContainer from './VideoContainer';
-import ButtonList from './ButtonList';
+import SideBar from './UI/SideBar';
+import VideoContainer from './videos/VideoContainer';
+import ButtonList from './UI/ButtonList';
 import { useSelector, useDispatch } from 'react-redux';
 import { Outlet } from 'react-router-dom';
 import {
@@ -24,7 +24,7 @@ const Body = () => {
   console.log('exception is here inside the body', suggestionException);
   return (
     <div
-      className='flex mx-2'
+      className='flex mx-2 '
       onClick={handleOnShowException}>
       {showSidebar && <SideBar />}
       <div className='w-full mt-14'>

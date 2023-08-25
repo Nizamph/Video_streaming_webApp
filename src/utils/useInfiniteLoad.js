@@ -7,6 +7,7 @@ import {
   REGION_CODE,
 } from './constants';
 const useInfiniteLoad = (infinteApi, addVideos) => {
+  console.log('infiniteAPi from useInfiniteScroll', infinteApi);
   const dispatch = useDispatch();
   const [page, setPage] = useState(0);
   const [loadedVideos, setLoadedVideos] = useState([]);
@@ -14,34 +15,37 @@ const useInfiniteLoad = (infinteApi, addVideos) => {
   const [newPageToken, setNewPageToken] = useState('');
   const [infiniteContentLoading, setInfiniteContentLoading] = useState(false);
   const fetchMoreVideos = async () => {
-    if (newPageToken.length > 0) {
-      setInfiniteContentLoading(true);
-      const res = await fetch(
-        infinteApi + newPageToken + REGION_CODE + GOOGLE_API_KEY
-      );
-      const data = await res.json();
-      console.log('data from useInfinite scroll', data);
-      setInfiniteContentLoading(false);
-      const { nextPageToken } = data;
+    if (page < 12) {
+      console.log('inside if of the page');
+      if (newPageToken.length > 0) {
+        console.log('pageToken is there');
+        setInfiniteContentLoading(true);
+        const res = await fetch(
+          infinteApi + newPageToken + REGION_CODE + GOOGLE_API_KEY
+        );
+        const data = await res.json();
+        setInfiniteContentLoading(false);
+        const { nextPageToken } = data;
 
-      console.log('nextVideoKeys', nextPageToken);
+        dispatch(addVideos(data.items));
+        setNewPageToken(`&pageToken=${nextPageToken}`);
+      } else {
+        console.log('page Token not there');
+        setShimmerLoading(true);
 
-      dispatch(addVideos(data.items));
-      setNewPageToken(`&pageToken=${nextPageToken}`);
-    } else {
-      setShimmerLoading(true);
-      const res = await fetch(infinteApi + REGION_CODE + GOOGLE_API_KEY);
-      const data = await res.json();
+        const res = await fetch(infinteApi + REGION_CODE + GOOGLE_API_KEY);
+        const data = await res.json();
 
-      setShimmerLoading(false);
-      const { nextPageToken } = data;
-
-      dispatch(addVideos(data.items));
-      setNewPageToken(`&pageToken=${nextPageToken}`);
+        setShimmerLoading(false);
+        const { nextPageToken } = data;
+        dispatch(addVideos(data.items));
+        setNewPageToken(`&pageToken=${nextPageToken}`);
+      }
     }
   };
   useEffect(() => {
     try {
+      console.log('useEffect working');
       fetchMoreVideos();
     } catch (err) {
       console.log(err);
@@ -56,7 +60,7 @@ const useInfiniteLoad = (infinteApi, addVideos) => {
       setPage((prevState) => prevState + 1);
     }
   };
-
+  console.log('pageNumber from infiniteScroll', page);
   useEffect(() => {
     window.addEventListener('scroll', handleScrollEventHandler);
 

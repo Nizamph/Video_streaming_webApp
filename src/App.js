@@ -2,17 +2,17 @@ import './App.css';
 import Header from './components/Header';
 import Body from './components/Body';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import VideoContainer from './components/VideoContainer';
-import ButtonList from './components/ButtonList';
-import Watch from './components/Watch';
-import SearchPage from './components/SearchPage';
+import VideoContainer from './components/videos/VideoContainer';
+import ButtonList from './components/UI/ButtonList';
+import Watch from './components/watch/Watch';
+import SearchPage from './components/search/SearchPage';
 import { useDispatch } from 'react-redux';
-import Shimmer from './components/Shimmer';
+import Shimmer from './components/UI/Shimmer';
 import {
   setShowSuggestion,
   setShowSuggestionException,
 } from './reduxStore/searchSlice';
-import ShimmerList from './components/ShimmerList';
+import ShimmerList from './components/UI/ShimmerList';
 
 const appRouter = createBrowserRouter([
   {
