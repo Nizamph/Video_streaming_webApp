@@ -21,7 +21,7 @@ const useGetChannelDetails = (channelId) => {
         id: details?.items[0]?.id,
         title: details?.items[0]?.snippet?.title,
         description: details?.items[0]?.snippet?.description,
-        subscriberCount: details?.items[0].statistics.subscriberCount,
+        subscriberCount: details?.items[0]?.statistics.subscriberCount,
       });
     }
   };
