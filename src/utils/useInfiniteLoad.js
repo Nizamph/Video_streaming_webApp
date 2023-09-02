@@ -21,7 +21,7 @@ const useInfiniteLoad = (infinteApi, addVideos) => {
   const fetchMoreVideos = async () => {
     if (page < 5) {
       console.log('inside if of the page');
-      if (newPageToken) {
+      if (newPageToken.length > 0 && newPageToken !== undefined) {
         console.log('pageToken is there');
         setInfiniteContentLoading(true);
         const res = await fetch(
