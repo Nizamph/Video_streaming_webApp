@@ -119,7 +119,7 @@ const Comments = ({ comment, handleInsertNode, editInputComment }) => {
               </>
             )}
           </div>
-          {comment?.name === 'Nizam' ? (
+          {comment?.name === 'User' ? (
             <div className='relative'>
               <button
                 className='flex justify-end items-center'
