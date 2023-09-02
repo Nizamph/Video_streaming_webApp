@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   GOOGLE_API_KEY,
   GET_MOST_POPULAR_VIDEOS,
@@ -14,8 +14,12 @@ const useInfiniteLoad = (infinteApi, addVideos) => {
   const [shimmerLoading, setShimmerLoading] = useState(false);
   const [newPageToken, setNewPageToken] = useState('');
   const [infiniteContentLoading, setInfiniteContentLoading] = useState(false);
+  const clickCount = useSelector((store) => store.video.clickCount);
+  useEffect(() => {
+    setPage(0);
+  }, [infinteApi]);
   const fetchMoreVideos = async () => {
-    if (page < 12) {
+    if (page < 8) {
       console.log('inside if of the page');
       if (newPageToken.length > 0) {
         console.log('pageToken is there');
@@ -50,7 +54,7 @@ const useInfiniteLoad = (infinteApi, addVideos) => {
     } catch (err) {
       console.log(err);
     }
-  }, [page, infinteApi]);
+  }, [page, infinteApi, clickCount]);
 
   const handleScrollEventHandler = () => {
     if (

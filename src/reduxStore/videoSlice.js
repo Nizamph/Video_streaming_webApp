@@ -10,6 +10,8 @@ const videoSlice = createSlice({
     relatedVideos: [],
     videoTypeApi: GET_MOST_POPULAR_VIDEOS,
     imageUrlCache: {},
+    pageCount: 0,
+    clickCount: 0,
   },
   reducers: {
     addVideos: (state, action) => {
@@ -39,10 +41,22 @@ const videoSlice = createSlice({
     setImageUrlCache: (state, action) => {
       state.imageUrlCache = { ...state.imageUrlCache, ...action.payload };
     },
+    setCurrentPage: (state, action) => {
+      state.pageCount = action.payload;
+    },
+    setClickCount: (state, action) => {
+      state.clickCount = action.payload.clickCount;
+    },
   },
 });
 
 export default videoSlice.reducer;
 
-export const { addVideos, addVideoApi, removeAllVideos, setImageUrlCache } =
-  videoSlice.actions;
+export const {
+  addVideos,
+  addVideoApi,
+  removeAllVideos,
+  setImageUrlCache,
+  setCurrentPage,
+  setClickCount,
+} = videoSlice.actions;

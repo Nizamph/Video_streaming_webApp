@@ -2,7 +2,7 @@ import hamburgerManu from '../youtubeIcons/hamburger-menu.svg';
 import Youtube from '../youtubeIcons/youtube-logo.svg';
 import Create from '../youtubeIcons/upload.svg';
 import notification from '../youtubeIcons/notifications.svg';
-import Profile from '../youtubeIcons/profile-dp.jpg';
+import Profile from '../youtubeIcons/propicRandom.png';
 import VoiceIcon from '../youtubeIcons/voice-search-icon.svg';
 import Search from '../youtubeIcons/search.svg';
 import { useDispatch, useSelector } from 'react-redux';

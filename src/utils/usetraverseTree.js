@@ -1,4 +1,4 @@
-import profilPic from '../youtubeIcons/profile-dp.jpg';
+import profilPic from '../youtubeIcons/propicRandom.png';
 const useTraverseTree = () => {
   function insertNode(tree, commentId, newComment) {
     if (!tree) {
@@ -11,7 +11,7 @@ const useTraverseTree = () => {
       if (itm.id === commentId) {
         itm.replies.unshift({
           id: new Date().getTime(),
-          name: 'Nizam',
+          name: 'User',
           url: profilPic,
           comment: newComment,
           replies: [],
@@ -27,11 +27,9 @@ const useTraverseTree = () => {
   }
 
   function deleteNode(tree, commentId) {
-    console.log('comment id from tree', commentId);
     if (!tree) {
       return [];
     }
-
     let copiedTree = structuredClone(tree);
 
     copiedTree = copiedTree.filter((cmnt) => {
@@ -46,7 +44,6 @@ const useTraverseTree = () => {
   }
 
   function editNode(tree, commentId, newComment) {
-    console.log('editNodeDetails', tree, commentId, newComment);
     if (!tree) return [];
     let copiedTree = structuredClone(tree);
     copiedTree = copiedTree.map((cmnt) => {

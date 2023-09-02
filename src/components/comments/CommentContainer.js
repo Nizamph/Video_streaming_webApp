@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import CommentCautionModal from './CommentCautionModal';
 import useTraverseTree from '../../utils/usetraverseTree';
 import { setShowCommentModal } from '../../reduxStore/commentSlice';
+import proPic from '../../youtubeIcons/propicRandom.png';
 const CommentContainer = () => {
   // const commentData = useSelector((store) => store.comment.commentsList);
   const deletCommentId = useSelector((store) => store.comment.deleteCommentId);
@@ -16,7 +17,7 @@ const CommentContainer = () => {
   const { deleteNode, insertNode } = useTraverseTree();
   const onDeleteHandler = () => {
     console.log('delete comment Id', deletCommentId);
-    let dataAfterDelete = deleteNode(commentData, deletCommentId);
+    let dataAfterDelete = deleteNode(comments, deletCommentId);
     console.log('data after delete ', dataAfterDelete);
     console.log('deleting from container');
     setComments(dataAfterDelete);
@@ -29,7 +30,8 @@ const CommentContainer = () => {
       return [
         {
           id: new Date().getTime(),
-          name: 'Nizam',
+          name: 'User',
+          url: proPic,
           comment: value,
           replies: [],
         },

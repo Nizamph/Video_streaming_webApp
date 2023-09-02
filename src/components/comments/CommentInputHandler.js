@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import displayPic from '../../youtubeIcons/profile-dp.jpg';
-
+import proPic from '../../youtubeIcons/propicRandom.png';
 const CommentInputHandler = ({ getCommentText }) => {
   const [disable, setDisable] = useState(true);
   const [isCommentFocussed, setIsCommentFocused] = useState(false);
@@ -22,7 +22,7 @@ const CommentInputHandler = ({ getCommentText }) => {
     <>
       <div className='flex justify-start'>
         <img
-          src={displayPic}
+          src={proPic}
           alt='dp'
           className='w-10 rounded-full mr-2'
         />

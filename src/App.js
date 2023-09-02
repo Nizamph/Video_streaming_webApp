@@ -7,6 +7,7 @@ import ButtonList from './components/UI/ButtonList';
 import Watch from './components/watch/Watch';
 import SearchPage from './components/search/SearchPage';
 import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 import Shimmer from './components/UI/Shimmer';
 import {
   setShowSuggestion,
@@ -50,10 +51,19 @@ const appRouter = createBrowserRouter([
 ]);
 function App() {
   const dispatch = useDispatch();
-  // const handleOnShowException = () => {
-  //   console.log('calling div from the app');
-  //   dispatch(setShowSuggestion(false));
-  // };
+
+  useEffect(() => {
+    const clearLocalStorageOnTabClose = () => {
+      localStorage.clear();
+      localStorage.setItem('currentMenu', 1);
+    };
+
+    window.addEventListener('beforeunload', clearLocalStorageOnTabClose);
+
+    return () => {
+      window.removeEventListener('beforeunload', clearLocalStorageOnTabClose);
+    };
+  }, []);
   return (
     <div>
       <RouterProvider router={appRouter}>

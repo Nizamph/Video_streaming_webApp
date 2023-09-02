@@ -36,7 +36,7 @@ import proPic17 from '../youtubeIcons/proPic17.jpg';
 import proPic18 from '../youtubeIcons/proPic18.jpg';
 import proPic19 from '../youtubeIcons/proPic19.jpg';
 import proPic20 from '../youtubeIcons/proPic20.jpg';
-export const GOOGLE_API_KEY = '&key=AIzaSyC5l6aEWGAJHz1Efsi7m9bQ7Kskvyg4WmA';
+export const GOOGLE_API_KEY = '&key=AIzaSyCje_VnhOdOwDVHce663trRB6ISiz9vXDQ';
 // AIzaSyAmX3J37XrbhTGDKi1LSvFwOsmVJ9Y_jrg
 export const REGION_CODE = '&regionCode=IN';
 export const NUMBER_OF_VIDEOS = 10;
@@ -206,86 +206,103 @@ export const commentData = [
 ];
 
 export let BUTTON_NAMES = [
-  'All',
-  'Gaming',
-  'Music',
-  'Mixes',
-  'React',
-  'Cinema',
-  'Comedy',
-  'Cricket',
-  'Film',
-  'Jokes',
-  'chatgpt',
-  'chandrayaan',
+  { id: 1, name: 'All' },
+  { id: 2, name: 'Investement' },
+  { id: 3, name: 'Music' },
+  { id: 4, name: 'Mixes' },
+  { id: 5, name: 'BlockChain' },
+  { id: 6, name: 'Camera' },
+  { id: 7, name: 'Photography' },
+  { id: 8, name: 'Malayalam Cinema' },
+  { id: 9, name: 'Software Engineer' },
+  { id: 10, name: 'Web3' },
+  { id: 11, name: 'Crypto' },
+  { id: 12, name: 'Metaverse' },
 ];
 
 export const sideBarMenus = [
   {
+    id: 1,
     name: 'Home',
     url: Home,
   },
   {
+    id: 2,
     name: 'Javascript',
     url: JavascriptIcon,
   },
   {
+    id: 3,
     name: 'HTML',
     url: htmlLogo,
   },
   {
+    id: 4,
     name: 'CSS',
     url: CssLogo,
   },
   {
+    id: 5,
     name: 'Vue.js',
     url: vuejsIcon,
   },
   {
+    id: 6,
     name: 'React.js',
     url: reactIcon,
   },
   {
+    id: 7,
     name: 'Angular.js',
     url: AngularIcon,
   },
   {
+    id: 8,
     name: 'Node.js',
     url: NodeLogo,
   },
   {
+    id: 9,
     name: 'Express.js',
     url: expressLogo,
   },
   {
+    id: 10,
     name: 'MongoDB',
     url: mongoDb,
   },
   {
+    id: 11,
     name: 'Explore',
     url: null,
   },
   {
+    id: 12,
     name: 'Trending',
     url: Trending,
   },
   {
+    id: 13,
     name: 'Music',
     url: music,
   },
   {
+    id: 14,
     name: 'Live',
     url: liveIcon,
   },
   {
+    id: 15,
     name: 'Films',
     url: films,
   },
   {
+    id: 16,
     name: 'News',
     url: news,
   },
   {
+    id: 17,
     name: 'sport',
     url: sport,
   },

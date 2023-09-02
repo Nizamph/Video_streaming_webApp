@@ -20,20 +20,23 @@ const VideoList = () => {
   const dispatch = useDispatch();
   const videoList = useSelector((store) => store.video.videoList);
   const menuOpen = useSelector((store) => store.app.isMenuOpen);
-  const getVideoApi = useSelector((store) => store.video.videoTypeApi);
-
+  let getVideoApi = useSelector((store) => store.video.videoTypeApi);
+  if (localStorage.getItem('currentVideoApi') !== null) {
+    getVideoApi = localStorage.getItem('currentVideoApi');
+  }
   console.log('video Api from videoList', getVideoApi);
   const { infiniteLoading, shimmerLoading } = useInfiniteLoad(
     getVideoApi,
     addVideos
   );
 
+  console.log('shimmer loading', shimmerLoading);
+  console.log('infinite loading ', infiniteLoading);
+
   return (
     <>
       {shimmerLoading ? (
-        <div className='grid grid-cols-1 md:grid-cols-3 gap-1'>
-          {ShimmerList(10)}
-        </div>
+        <div className='flex flex-wrap gap-1'>{ShimmerList(10)}</div>
       ) : infiniteLoading ? (
         <>
           {videoList?.map((video) =>
@@ -51,7 +54,9 @@ const VideoList = () => {
               </Link>
             )
           )}
-          {ShimmerList(6)}
+          <div className='flex flex-wrap justify-start gap-1'>
+            {ShimmerList(10)}
+          </div>
         </>
       ) : (
         videoList?.map((video) =>

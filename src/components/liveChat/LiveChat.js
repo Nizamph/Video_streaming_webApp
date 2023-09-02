@@ -3,7 +3,7 @@ import ChatList from './ChatList';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addMessages } from '../../reduxStore/chatSlice';
-import proPic from '../../youtubeIcons/profile-dp.jpg';
+import proPic from '../../youtubeIcons/propicRandom.png';
 import displayPic from '../../youtubeIcons/profile-dp.jpg';
 import imogi from '../../youtubeIcons/imogi.png';
 import superChat from '../../youtubeIcons/superchat.png';
@@ -15,34 +15,34 @@ const LiveChat = () => {
 
   console.log('live message', liveMessages);
   return (
-    <div className='flex flex-col justify-center items-start w-full'>
-      <div className='font-semibold border w-11/12 flex justify-start items-center p-1 mt-4 rounded-t-lg border-slate-400'>
+    <div className='flex flex-col justify-center items-start w-full md:w-96'>
+      <div className='font-semibold border w-full md:w-11/12 flex justify-start items-center p-1 mt-4 rounded-t-lg border-slate-400'>
         Live Chat
       </div>
       <div
         className={
           showLiveChat
-            ? `bg-gray-100 border  w-11/12 border-black h-[330px] max-h-[515px] relative overflow-y-scroll flex flex-col-reverse`
+            ? `bg-gray-100 border w-full md:w-11/12 border-black h-[330px] max-h-[515px] relative overflow-y-scroll flex flex-col-reverse`
             : `hidden`
         }>
         <ChatList />
       </div>
       <form
-        className='pt-2 flex flex-col justify-center border border-black w-11/12 p-1  rounded-b-lg'
+        className='pt-2 flex flex-col justify-center border border-black w-full md:w-11/12 p-1 rounded-b-lg'
         onSubmit={(e) => {
           e.preventDefault();
           dispatch(
             addMessages({
-              name: 'Nizam P H',
+              name: 'User',
               message: liveMessages,
-              image: displayPic,
+              image: proPic,
             })
           );
           setliveMessages('');
         }}>
         {showLiveChat && (
           <>
-            <div className='flex gap-2 items-start mt-4'>
+            <div className='flex flex-col md:flex-row gap-2 items-start mt-4'>
               <div>
                 <img
                   alt='proPic'
@@ -50,14 +50,14 @@ const LiveChat = () => {
                   className='w-7 rounded-full'
                 />
               </div>
-              <div>
-                <p className='font-semibold'>Nizam Ph</p>
+              <div className='md:w-64'>
+                <p className='font-semibold'>User</p>
                 <input
                   type='text'
                   onChange={(e) => setliveMessages(e.target.value)}
                   value={liveMessages}
-                  className=' border-b border-gray-400 p-1  w-64 h-6 '
-                  placeholder='type your message'
+                  className='border-b border-gray-400 p-1 w-full h-6 '
+                  placeholder='Type your message'
                 />
               </div>
             </div>
@@ -92,7 +92,7 @@ const LiveChat = () => {
         <button
           className='hover:bg-gray-300 p-1 rounded-full font-semibold'
           onClick={() => setShowLiveChat((prevState) => !prevState)}>
-          {showLiveChat ? 'Hide' : 'show Chat'}
+          {showLiveChat ? 'Hide' : 'Show Chat'}
         </button>
       </form>
     </div>

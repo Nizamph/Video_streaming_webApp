@@ -14,7 +14,7 @@ const useGetChannelDetails = (channelId) => {
       const res = await fetch(
         `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${channelId}${GOOGLE_API_KEY}`
       );
-      const details = await res.json();
+      const details = await res?.json();
 
       setDetails({
         channelDp: details?.items[0]?.snippet?.thumbnails?.medium?.url,

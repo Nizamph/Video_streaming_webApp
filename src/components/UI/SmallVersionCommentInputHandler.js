@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import displayPic from '../../youtubeIcons/profile-dp.jpg';
+import displayPic from '../../youtubeIcons/propicRandom.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { addComment } from '../../reduxStore/commentSlice';
 import useTraverseTree from '../../utils/usetraverseTree';
