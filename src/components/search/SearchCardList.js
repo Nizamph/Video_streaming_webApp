@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import SearchCard from './SearchCard';
 import { useSelector } from 'react-redux';
-import { GOOGLE_API_KEY } from '../../utils/constants';
+import { GOOGLE_API_KEY, SEARCH_VIDEOS } from '../../utils/constants';
 import { useSearchParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 const SearchCardList = () => {
@@ -22,7 +22,7 @@ const SearchCardList = () => {
   const getSearchVidoes = async () => {
     if (searchQuery !== '') {
       const res = await fetch(
-        `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=${searchQuery}&type=video${GOOGLE_API_KEY}`
+        `${SEARCH_VIDEOS}${searchQuery}&type=video${GOOGLE_API_KEY}`
       );
       const searchVideos = await res.json();
       console.log('searched videos', searchVideos);

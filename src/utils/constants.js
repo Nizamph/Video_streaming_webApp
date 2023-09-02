@@ -36,13 +36,14 @@ import proPic17 from '../youtubeIcons/proPic17.jpg';
 import proPic18 from '../youtubeIcons/proPic18.jpg';
 import proPic19 from '../youtubeIcons/proPic19.jpg';
 import proPic20 from '../youtubeIcons/proPic20.jpg';
-export const GOOGLE_API_KEY = '&key=AIzaSyBUitYn4lrl9iLIp-Q8-KN4FwWLF86lxy8';
+export const GOOGLE_API_KEY = '&key=AIzaSyDADkt0eeEgr7SLM_2CuaE0Jbs4grRC8KQ';
 // AIzaSyAmX3J37XrbhTGDKi1LSvFwOsmVJ9Y_jrg
 export const REGION_CODE = '&regionCode=IN';
 export const NUMBER_OF_VIDEOS = 10;
 export const GET_MOST_POPULAR_VIDEOS = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=${NUMBER_OF_VIDEOS}`;
 //https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=
-
+export const SEARCH_VIDEOS =
+  'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=';
 export const GET_SUGGESTION_LIST =
   'http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q';
 
