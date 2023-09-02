@@ -21,9 +21,9 @@ const VideoList = () => {
   const videoList = useSelector((store) => store.video.videoList);
   const menuOpen = useSelector((store) => store.app.isMenuOpen);
   let getVideoApi = useSelector((store) => store.video.videoTypeApi);
-  if (localStorage.getItem('currentVideoApi') !== null) {
-    getVideoApi = localStorage.getItem('currentVideoApi');
-  }
+  // if (localStorage.getItem('currentVideoApi') !== null) {
+  //   getVideoApi = localStorage.getItem('currentVideoApi');
+  // }
   console.log('video Api from videoList', getVideoApi);
   const { infiniteLoading, shimmerLoading } = useInfiniteLoad(
     getVideoApi,

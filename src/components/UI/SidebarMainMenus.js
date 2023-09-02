@@ -39,10 +39,6 @@ const SidebarMainMenus = ({
       navigate('/');
 
       dispatch(removeAllVideos());
-      localStorage.setItem(
-        'currentVideoApi',
-        `${GET_CATEGORY_VIDEOS}&q=${name}&type=video`
-      );
       dispatch(addVideoApi(`${GET_CATEGORY_VIDEOS}&q=${name}&type=video`));
       dispatch(setClickCount({ clickCount: clickVal + 1 }));
     }

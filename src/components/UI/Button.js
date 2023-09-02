@@ -18,7 +18,6 @@ const Button = ({ name, className, setCurrentBtn, type, id }) => {
     if (name === 'All') {
       dispatch(removeAllVideos());
       dispatch(addVideoApi(GET_MOST_POPULAR_VIDEOS));
-      localStorage.setItem('currentVideoApi', GET_MOST_POPULAR_VIDEOS);
       dispatch(setClickCount({ clickCount: currentClick + 1 }));
     } else {
       dispatch(removeAllVideos());
