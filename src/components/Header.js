@@ -59,6 +59,9 @@ const Header = () => {
     }
   }, [searchQuery]);
 
+  console.log('inputClearer', showInputClearer);
+  console.log('searchQuery', searchQuery);
+  // console.log('search query', searchQuery);
   const onChangeHandler = (e) => {
     setSearchQuery(e.target.value);
     e.stopPropagation();
@@ -70,6 +73,7 @@ const Header = () => {
   };
 
   const handleOnShowException = (e) => {
+    console.log('calling div from the header ');
     dispatch(setShowSuggestion(false));
   };
 
@@ -86,7 +90,7 @@ const Header = () => {
         <button onClick={showSidebarHandler}>
           <img
             src={hamburgerManu}
-            className='h-6'
+            className='h-6 w-6 ml-[12px]'
             alt='humberger Menu'
           />
         </button>
