@@ -8,6 +8,7 @@ import {
   addVideos,
   removeAllVideos,
   setClickCount,
+  setPageToken,
 } from '../../reduxStore/videoSlice';
 import { useDispatch, useSelector } from 'react-redux';
 const Button = ({ name, className, setCurrentBtn, type, id }) => {
@@ -16,9 +17,10 @@ const Button = ({ name, className, setCurrentBtn, type, id }) => {
   const categorySelectHandler = (id) => {
     console.log('clicking category button');
     if (name === 'All') {
-      dispatch(removeAllVideos());
       dispatch(addVideoApi(GET_MOST_POPULAR_VIDEOS));
-      dispatch(setClickCount({ clickCount: currentClick + 1 }));
+      dispatch(removeAllVideos());
+      // dispatch(setClickCount({ clickCount: currentClick + 1 }));
+      dispatch(setPageToken(''));
     } else {
       dispatch(removeAllVideos());
       dispatch(addVideoApi(`${GET_CATEGORY_VIDEOS}&q=${name}&type=video`));
@@ -26,8 +28,10 @@ const Button = ({ name, className, setCurrentBtn, type, id }) => {
         'currentVideoApi',
         `${GET_CATEGORY_VIDEOS}&q=${name}&type=video`
       );
-      dispatch(setClickCount({ clickCount: currentClick + 1 }));
+      // dispatch(setClickCount({ clickCount: currentClick + 1 }));
+      dispatch(setPageToken(''));
     }
+    dispatch(setClickCount({ clickCount: currentClick + 1 }));
     setCurrentBtn(id);
     localStorage.setItem('currentButton', id);
     localStorage.removeItem('currentMenu');

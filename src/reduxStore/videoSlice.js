@@ -12,6 +12,7 @@ const videoSlice = createSlice({
     imageUrlCache: {},
     pageCount: 0,
     clickCount: 0,
+    pageToken: '',
   },
   reducers: {
     addVideos: (state, action) => {
@@ -47,6 +48,9 @@ const videoSlice = createSlice({
     setClickCount: (state, action) => {
       state.clickCount = action.payload.clickCount;
     },
+    setPageToken: (state, action) => {
+      state.pageToken = action.payload;
+    },
   },
 });
 
@@ -58,5 +62,6 @@ export const {
   removeAllVideos,
   setImageUrlCache,
   setCurrentPage,
+  setPageToken,
   setClickCount,
 } = videoSlice.actions;

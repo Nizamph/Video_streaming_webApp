@@ -4,6 +4,7 @@ import {
   addVideoApi,
   removeAllVideos,
   setClickCount,
+  setPageToken,
 } from '../../reduxStore/videoSlice';
 import { useNavigate } from 'react-router-dom';
 import {
@@ -45,6 +46,7 @@ const SidebarMainMenus = ({
     localStorage.setItem('currentMenu', id);
     localStorage.removeItem('currentButton');
     setCurrentId(id);
+    dispatch(setPageToken(''));
     // localStorage.setItem('currentMenu',id)
   };
 

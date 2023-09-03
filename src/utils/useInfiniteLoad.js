@@ -6,23 +6,22 @@ import {
   GET_MOST_POPULAR_VIDEOS,
   REGION_CODE,
 } from './constants';
+import { setPageToken } from '../reduxStore/videoSlice';
 const useInfiniteLoad = (infinteApi, addVideos) => {
-  console.log('infiniteAPi from useInfiniteScroll', infinteApi);
   const dispatch = useDispatch();
   const [page, setPage] = useState(0);
   const [loadedVideos, setLoadedVideos] = useState([]);
   const [shimmerLoading, setShimmerLoading] = useState(false);
-  const [newPageToken, setNewPageToken] = useState('');
+  // const [newPageToken, setNewPageToken] = useState('');
   const [infiniteContentLoading, setInfiniteContentLoading] = useState(false);
+  const newPageToken = useSelector((store) => store.video.pageToken);
   const clickCount = useSelector((store) => store.video.clickCount);
   useEffect(() => {
     setPage(0);
   }, [infinteApi]);
   const fetchMoreVideos = async () => {
     if (page < 5) {
-      console.log('inside if of the page');
-      if (newPageToken.length > 0 && newPageToken !== undefined) {
-        console.log('pageToken is there');
+      if (newPageToken) {
         setInfiniteContentLoading(true);
         const res = await fetch(
           infinteApi + newPageToken + REGION_CODE + GOOGLE_API_KEY
@@ -32,9 +31,10 @@ const useInfiniteLoad = (infinteApi, addVideos) => {
         const { nextPageToken } = data;
 
         dispatch(addVideos(data.items));
-        setNewPageToken(`&pageToken=${nextPageToken}`);
+        if (nextPageToken) {
+          dispatch(setPageToken(`&pageToken=${nextPageToken}`));
+        }
       } else {
-        console.log('page Token not there');
         setShimmerLoading(true);
 
         const res = await fetch(infinteApi + REGION_CODE + GOOGLE_API_KEY);
@@ -43,13 +43,15 @@ const useInfiniteLoad = (infinteApi, addVideos) => {
         setShimmerLoading(false);
         const { nextPageToken } = data;
         dispatch(addVideos(data.items));
-        setNewPageToken(`&pageToken=${nextPageToken}`);
+        // setNewPageToken(`&pageToken=${nextPageToken}`);
+        if (nextPageToken) {
+          dispatch(setPageToken(`&pageToken=${nextPageToken}`));
+        }
       }
     }
   };
   useEffect(() => {
     try {
-      console.log('useEffect working');
       fetchMoreVideos();
     } catch (err) {
       console.log(err);
@@ -64,7 +66,7 @@ const useInfiniteLoad = (infinteApi, addVideos) => {
       setPage((prevState) => prevState + 1);
     }
   };
-  console.log('pageNumber from infiniteScroll', page);
+
   useEffect(() => {
     window.addEventListener('scroll', handleScrollEventHandler);
 

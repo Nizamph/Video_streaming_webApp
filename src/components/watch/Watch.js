@@ -37,11 +37,9 @@ const Watch = () => {
   const getVideoDetails = async () => {
     let res = await fetch(SINGLE_VIDEO_DETAILS + videoId + GOOGLE_API_KEY);
     let videoDetails = await res.json();
-    console.log('details', videoDetails);
+
     setSingleVideoDetails(videoDetails.items);
   };
-
-  console.log('single video details', singleVideoDetails);
 
   // let { likeCount } = singleVideoDetails[0]?.statistics;
 
@@ -64,7 +62,7 @@ const Watch = () => {
   const relatedVideosList = async () => {
     let res = await fetch(RELATED_VIDEOS + 10 + REGION_CODE + GOOGLE_API_KEY);
     const relatedVideos = await res.json();
-    console.log('relatedVideos ', relatedVideos);
+
     setRelatedVideos(relatedVideos.items);
   };
 
@@ -74,7 +72,6 @@ const Watch = () => {
 
   const abbrevatedSubscribeCount = useCountAbbrevation(subscriberCount);
 
-  console.log('singleVideoDetails', singleVideoDetails);
   return (
     <div className='flex flex-col md:flex-row  gap-12 m-4'>
       <div className='flex flex-col justify-center w-[62%]'>

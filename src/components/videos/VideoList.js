@@ -24,14 +24,11 @@ const VideoList = () => {
   // if (localStorage.getItem('currentVideoApi') !== null) {
   //   getVideoApi = localStorage.getItem('currentVideoApi');
   // }
-  console.log('video Api from videoList', getVideoApi);
+
   const { infiniteLoading, shimmerLoading } = useInfiniteLoad(
     getVideoApi,
     addVideos
   );
-
-  console.log('shimmer loading', shimmerLoading);
-  console.log('infinite loading ', infiniteLoading);
 
   return (
     <>

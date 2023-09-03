@@ -59,9 +59,6 @@ const Header = () => {
     }
   }, [searchQuery]);
 
-  console.log('inputClearer', showInputClearer);
-  console.log('searchQuery', searchQuery);
-  // console.log('search query', searchQuery);
   const onChangeHandler = (e) => {
     setSearchQuery(e.target.value);
     e.stopPropagation();
@@ -73,7 +70,6 @@ const Header = () => {
   };
 
   const handleOnShowException = (e) => {
-    console.log('calling div from the header ');
     dispatch(setShowSuggestion(false));
   };
 

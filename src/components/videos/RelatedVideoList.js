@@ -3,7 +3,6 @@ import RelatedVideo from './RelatedVideo';
 import { Link } from 'react-router-dom';
 
 const RelatedVideoList = ({ relatedVideos }) => {
-  console.log('relatedVideos', relatedVideos);
   return (
     <>
       {relatedVideos?.map((video) => (
