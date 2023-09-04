@@ -36,7 +36,7 @@ import proPic17 from '../youtubeIcons/proPic17.jpg';
 import proPic18 from '../youtubeIcons/proPic18.jpg';
 import proPic19 from '../youtubeIcons/proPic19.jpg';
 import proPic20 from '../youtubeIcons/proPic20.jpg';
-export const GOOGLE_API_KEY = '&key=AIzaSyDmljzwLUH2RyfQuiQqLZChtJkpCXPk3U8';
+export const GOOGLE_API_KEY = '&key=AIzaSyC5l6aEWGAJHz1Efsi7m9bQ7Kskvyg4WmA';
 // AIzaSyAmX3J37XrbhTGDKi1LSvFwOsmVJ9Y_jrg
 export const REGION_CODE = '&regionCode=IN';
 export const NUMBER_OF_VIDEOS = 10;
