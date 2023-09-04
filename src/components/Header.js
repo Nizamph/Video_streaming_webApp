@@ -15,7 +15,7 @@ import {
   setShowSuggestion,
   setShowSuggestionException,
 } from '../reduxStore/searchSlice';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -94,11 +94,13 @@ const Header = () => {
             alt='humberger Menu'
           />
         </button>
-        <img
-          src={Youtube}
-          className='h-5 ml-5'
-          alt='youtube'
-        />
+        <Link to='/'>
+          <img
+            src={Youtube}
+            className='h-5 ml-5'
+            alt='youtube'
+          />
+        </Link>
       </div>
       <div>
         <div
