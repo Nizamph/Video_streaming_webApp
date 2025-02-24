@@ -1,32 +1,19 @@
-import hamburgerManu from '../youtubeIcons/hamburger-menu.svg';
-import Youtube from '../youtubeIcons/youtube-logo.svg';
-import Create from '../youtubeIcons/upload.svg';
-import notification from '../youtubeIcons/notifications.svg';
-import Profile from '../youtubeIcons/propicRandom.png';
-import VoiceIcon from '../youtubeIcons/voice-search-icon.svg';
-import Search from '../youtubeIcons/search.svg';
-import { useDispatch, useSelector } from 'react-redux';
-import { menuToggle, setInputClearer } from '../reduxStore/appSlice';
-import { useEffect, useState } from 'react';
-import { setSearchContent } from '../reduxStore/searchSlice';
-import SuggestionList from './suggestions/SuggestionList';
-import crossIcon from '../youtubeIcons/crossIcon.png';
-import {
-  setShowSuggestion,
-  setShowSuggestionException,
-} from '../reduxStore/searchSlice';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, Link } from "react-router-dom";
+import { menuToggle, setInputClearer } from "../reduxStore/appSlice";
+import { setSearchContent, setShowSuggestion } from "../reduxStore/searchSlice";
+import SuggestionList from "./suggestions/SuggestionList";
+import { Menu, Search, Mic, Upload, Bell, Circle, Play } from "lucide-react";
 
 const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const searchContent = useSelector((store) => store.search.searchContent);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [showCrossBtn, setShowCrossBtn] = useState(false);
-  const valueForSearch = useSelector((store) => store.search.valueForSearch);
+  const [searchQuery, setSearchQuery] = useState("");
   const showSuggestion = useSelector((store) => store.search.showSuggestion);
   const showInputClearer = useSelector((store) => store.app.showInputClearer);
-  // const [showSuggestion, setShowSuggestion] = useState(false);
+
   useEffect(() => {
     if (searchContent !== null) {
       setSearchQuery(searchContent);
@@ -37,129 +24,131 @@ const Header = () => {
     dispatch(menuToggle());
   };
 
-  const onBlurHandler = (e) => {
-    setShowSuggestion(true);
-    e.stopPropagation();
-  };
-
   const searchHandler = (search_query) => {
     if (search_query.length > 0) {
       navigate(`/results?search_query=${search_query}`);
       dispatch(setSearchContent(search_query));
       dispatch(setShowSuggestion(false));
-      localStorage.setItem('searchContent', search_query);
+      localStorage.setItem("searchContent", search_query);
     }
   };
 
   useEffect(() => {
-    if (searchQuery.length > 0) {
-      dispatch(setInputClearer(true));
-    } else {
-      dispatch(setInputClearer(false));
-    }
+    dispatch(setInputClearer(searchQuery.length > 0));
   }, [searchQuery]);
 
-  console.log('inputClearer', showInputClearer);
-  console.log('searchQuery', searchQuery);
-  // console.log('search query', searchQuery);
   const onChangeHandler = (e) => {
     setSearchQuery(e.target.value);
     e.stopPropagation();
   };
 
-  const onFocusHandler = (e) => {
-    dispatch(setShowSuggestion(true));
-    e.stopPropagation();
-  };
-
-  const handleOnShowException = (e) => {
-    console.log('calling div from the header ');
-    dispatch(setShowSuggestion(false));
-  };
-
   const clearSearchContentHandler = () => {
-    setSearchQuery('');
-    localStorage.removeItem('searchContent');
+    setSearchQuery("");
+    localStorage.removeItem("searchContent");
   };
+
+  // Custom Logo Component with Gradient Text
+  const StreamLogo = () => (
+    <button className="flex items-center gap-1">
+      {/* Gradient Play Icon */}
+      <svg
+        className="w-6 h-6"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M8 5V19L19 12L8 5Z" fill="url(#logo-gradient)" />
+        <defs>
+          <linearGradient id="logo-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#3B82F6" /> {/* blue-500 */}
+            <stop offset="100%" stopColor="#8B5CF6" /> {/* purple-500 */}
+          </linearGradient>
+        </defs>
+      </svg>
+
+      {/* Gradient Text */}
+      <span className="text-lg font-bold tracking-tight bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
+        StreamVerse
+      </span>
+    </button>
+  );
 
   return (
-    <div
-      className='py-2 grid grid-flow-col w-full  shadow-md px-4 fixed z-20 bg-white'
-      onClick={(e) => handleOnShowException(e)}>
-      <div className='col-span-1 flex items-center'>
-        <button onClick={showSidebarHandler}>
-          <img
-            src={hamburgerManu}
-            className='h-6 w-6 ml-[12px]'
-            alt='humberger Menu'
-          />
-        </button>
-        <Link to='/'>
-          <img
-            src={Youtube}
-            className='h-5 ml-5'
-            alt='youtube'
-          />
-        </Link>
-      </div>
-      <div>
-        <div
-          className='flex col-span-8 justify-center items-center mr-7'
-          onClick={(e) => e.stopPropagation()}>
-          <input
-            className='w-4/5 h-9 border-l border-t border-b pl-3 p-2 border-gray-300 rounded-l-full'
-            type='text'
-            placeholder='Search..'
-            value={searchQuery}
-            onChange={onChangeHandler}
-            onFocus={(e) => onFocusHandler(e)}
-            onBlur={(e) => onBlurHandler(e)}
-          />
-          {showInputClearer && (
-            <button
-              className='border-y border-gray-300'
-              onClick={clearSearchContentHandler}>
-              <img
-                src={crossIcon}
-                className='w-[37px]'
-              />
-            </button>
-          )}
+    <div className="fixed top-0 left-0 right-0 z-20 backdrop-blur-md bg-slate-900/95 border-b border-slate-700/50">
+      <div className="grid grid-flow-col w-full px-4 py-2">
+        {/* Left Section */}
+        <div className="col-span-1 flex items-center gap-4 ">
           <button
-            className='p-[0.30rem] px-4 border border-gray-200 mr-2 rounded-r-full '
-            onClick={() => searchHandler(searchQuery)}>
-            <img
-              src={Search}
-              className='h-6'
-            />
+            onClick={showSidebarHandler}
+            className="p-2 hover:bg-slate-700/50 rounded-lg transition-colors"
+          >
+            <Menu className="w-6 h-6 text-slate-300" />
           </button>
-          <button className='p-2 bg-gray-100 rounded-full hover:bg-gray-200 mr-7'>
-            <img
-              src={VoiceIcon}
-              className='h-5'
-            />
+          <Link to="/" className="flex items-center">
+            <StreamLogo />
+          </Link>
+        </div>
+
+        {/* Middle Section - Search */}
+        <div className="flex justify-center items-center">
+          <div className="flex items-center max-w-2xl w-full">
+            <div className="flex flex-1 items-center">
+              <div className="relative flex-1 flex items-center">
+                <input
+                  className="w-full h-10 px-4 bg-slate-800/50 text-slate-200 placeholder-slate-400 
+                    border border-slate-700 rounded-l-full focus:outline-none focus:border-blue-500
+                    transition-colors"
+                  type="text"
+                  placeholder="Search..."
+                  value={searchQuery}
+                  onChange={onChangeHandler}
+                  onFocus={() => dispatch(setShowSuggestion(true))}
+                />
+                {showInputClearer && (
+                  <button
+                    onClick={clearSearchContentHandler}
+                    className="absolute right-2 p-1 hover:bg-slate-700/50 rounded-full"
+                  >
+                    <Circle className="w-5 h-5 text-slate-400" />
+                  </button>
+                )}
+              </div>
+              <button
+                onClick={() => searchHandler(searchQuery)}
+                className="h-10 px-6 bg-slate-800 hover:bg-slate-700 text-slate-300 
+                  border border-slate-700 rounded-r-full transition-colors"
+              >
+                <Search className="w-5 h-5" />
+              </button>
+            </div>
+            <button
+              className="ml-4 p-2 bg-slate-800/50 hover:bg-slate-700 text-slate-300 
+              rounded-full transition-colors"
+            >
+              <Mic className="w-5 h-5" />
+            </button>
+          </div>
+          {/* Suggestions */}
+          <div className="absolute top-full w-[40%] mt-1">
+            <SuggestionList searchQuery={searchQuery} />
+          </div>
+        </div>
+
+        {/* Right Section */}
+        <div className="col-span-1 flex items-center justify-end gap-2">
+          <button className="p-2 hover:bg-slate-700/50 rounded-lg transition-colors">
+            <Upload className="w-6 h-6 text-slate-300" />
+          </button>
+          <button className="p-2 hover:bg-slate-700/50 rounded-lg transition-colors">
+            <Bell className="w-6 h-6 text-slate-300" />
+          </button>
+          <button
+            className="w-8 h-8 rounded-full bg-blue-500/20 text-blue-400 
+            flex items-center justify-center hover:bg-blue-500/30 transition-colors"
+          >
+            <span className="text-sm font-medium">AV</span>
           </button>
         </div>
-        <div>
-          <SuggestionList searchQuery={searchQuery} />
-        </div>
-      </div>
-      <div className='col-span-1 flex justify-evenly'>
-        <img
-          src={Create}
-          className='h-7'
-          alt='create video'
-        />
-        <img
-          src={notification}
-          className='h-7'
-          alt='notification'
-        />
-        <img
-          src={Profile}
-          className='h-7 rounded-full'
-          alt='dp'
-        />
       </div>
     </div>
   );

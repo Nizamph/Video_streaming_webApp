@@ -1,15 +1,16 @@
-import React from 'react';
-import RelatedVideo from './RelatedVideo';
-import { Link } from 'react-router-dom';
+import React from "react";
+import RelatedVideo from "./RelatedVideo";
+import { Link } from "react-router-dom";
 
 const RelatedVideoList = ({ relatedVideos }) => {
   return (
-    <>
+    <div className="space-y-3">
       {relatedVideos?.map((video) => (
         <Link
           key={video?.id}
           to={`/watch?v=${video?.id}`}
-          className='flex gap-3 mt-2 h-24 w-96'>
+          className="block hover:bg-gray-700 rounded-lg transition-colors"
+        >
           <RelatedVideo
             videoTitle={video?.snippet?.localized?.title}
             title={video?.snippet?.channelTitle}
@@ -19,7 +20,7 @@ const RelatedVideoList = ({ relatedVideos }) => {
           />
         </Link>
       ))}
-    </>
+    </div>
   );
 };
 

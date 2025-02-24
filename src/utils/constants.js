@@ -1,113 +1,113 @@
-import JavascriptIcon from '../youtubeIcons/icons8-javascript-50.png';
-import vuejsIcon from '../youtubeIcons/vue.js icon.png';
-import reactIcon from '../youtubeIcons/ract icon.png';
-import htmlLogo from '../youtubeIcons/html_html_logo.svg';
-import CssLogo from '../youtubeIcons/cssIcon.png';
-import NodeLogo from '../youtubeIcons/node.js icon.png';
-import expressLogo from '../youtubeIcons/express.js icon.png';
-import mongoDb from '../youtubeIcons/mongodbIcon.png';
-import Home from '../youtubeIcons/home.svg';
-import AngularIcon from '../youtubeIcons/angularIcon.png';
-import Trending from '../youtubeIcons/trendingIcon.png';
-import music from '../youtubeIcons/musicIcon.png';
-import films from '../youtubeIcons/movieIcon.png';
-import liveIcon from '../youtubeIcons/LiveIcon.png';
-import sport from '../youtubeIcons/sportIcon.png';
-import fashion from '../youtubeIcons/fashionIcon.png';
-import news from '../youtubeIcons/newsIcon.png';
-import games from '../youtubeIcons/gamesIcon.png';
-import proPic1 from '../youtubeIcons/proPic1.jpg';
-import proPic2 from '../youtubeIcons/proPic2.jpg';
-import proPic3 from '../youtubeIcons/proPic3.jpg';
-import proPic4 from '../youtubeIcons/proPic4.jpg';
-import proPic5 from '../youtubeIcons/propic5.jpg';
-import proPic6 from '../youtubeIcons/proPic6.jpg';
-import proPic7 from '../youtubeIcons/proPic7.jpg';
-import proPic8 from '../youtubeIcons/proPic8.jpg';
-import proPic9 from '../youtubeIcons/proPic9.jpg';
-import proPic10 from '../youtubeIcons/proPic10.jpg';
-import proPic11 from '../youtubeIcons/proPic11.jpg';
-import proPic12 from '../youtubeIcons/proPic12.jpg';
-import proPic13 from '../youtubeIcons/proPic13.jpg';
-import proPic14 from '../youtubeIcons/proPic14.jpg';
-import proPic15 from '../youtubeIcons/proPic15.jpg';
-import proPic16 from '../youtubeIcons/proPic16.jpg';
-import proPic17 from '../youtubeIcons/proPic17.jpg';
-import proPic18 from '../youtubeIcons/proPic18.jpg';
-import proPic19 from '../youtubeIcons/proPic19.jpg';
-import proPic20 from '../youtubeIcons/proPic20.jpg';
-export const GOOGLE_API_KEY = '&key=AIzaSyBCIBqW2dcxOXfoWlESncg3h98alQ0bRyU';
+import JavascriptIcon from "../youtubeIcons/icons8-javascript-50.png";
+import vuejsIcon from "../youtubeIcons/vue.js icon.png";
+import reactIcon from "../youtubeIcons/ract icon.png";
+import htmlLogo from "../youtubeIcons/html_html_logo.svg";
+import CssLogo from "../youtubeIcons/cssIcon.png";
+import NodeLogo from "../youtubeIcons/node.js icon.png";
+import expressLogo from "../youtubeIcons/express.js icon.png";
+import mongoDb from "../youtubeIcons/mongodbIcon.png";
+import Home from "../youtubeIcons/home.svg";
+import AngularIcon from "../youtubeIcons/angularIcon.png";
+import Trending from "../youtubeIcons/trendingIcon.png";
+import music from "../youtubeIcons/musicIcon.png";
+import films from "../youtubeIcons/movieIcon.png";
+import liveIcon from "../youtubeIcons/LiveIcon.png";
+import sport from "../youtubeIcons/sportIcon.png";
+import fashion from "../youtubeIcons/fashionIcon.png";
+import news from "../youtubeIcons/newsIcon.png";
+import games from "../youtubeIcons/gamesIcon.png";
+import proPic1 from "../youtubeIcons/proPic1.jpg";
+import proPic2 from "../youtubeIcons/proPic2.jpg";
+import proPic3 from "../youtubeIcons/proPic3.jpg";
+import proPic4 from "../youtubeIcons/proPic4.jpg";
+import proPic5 from "../youtubeIcons/propic5.jpg";
+import proPic6 from "../youtubeIcons/proPic6.jpg";
+import proPic7 from "../youtubeIcons/proPic7.jpg";
+import proPic8 from "../youtubeIcons/proPic8.jpg";
+import proPic9 from "../youtubeIcons/proPic9.jpg";
+import proPic10 from "../youtubeIcons/proPic10.jpg";
+import proPic11 from "../youtubeIcons/proPic11.jpg";
+import proPic12 from "../youtubeIcons/proPic12.jpg";
+import proPic13 from "../youtubeIcons/proPic13.jpg";
+import proPic14 from "../youtubeIcons/proPic14.jpg";
+import proPic15 from "../youtubeIcons/proPic15.jpg";
+import proPic16 from "../youtubeIcons/proPic16.jpg";
+import proPic17 from "../youtubeIcons/proPic17.jpg";
+import proPic18 from "../youtubeIcons/proPic18.jpg";
+import proPic19 from "../youtubeIcons/proPic19.jpg";
+import proPic20 from "../youtubeIcons/proPic20.jpg";
+export const GOOGLE_API_KEY = "&key=AIzaSyDmljzwLUH2RyfQuiQqLZChtJkpCXPk3U8";
 // AIzaSyAmX3J37XrbhTGDKi1LSvFwOsmVJ9Y_jrg
-export const REGION_CODE = '&regionCode=IN';
+export const REGION_CODE = "&regionCode=IN";
 export const NUMBER_OF_VIDEOS = 10;
 export const GET_MOST_POPULAR_VIDEOS = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=${NUMBER_OF_VIDEOS}`;
 //https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=
 export const SEARCH_VIDEOS =
-  'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=';
+  "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=";
 export const GET_SUGGESTION_LIST =
-  'http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q';
+  "http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q";
 
 export const SINGLE_VIDEO_DETAILS = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=`;
 
 export const GET_CATEGORY_VIDEOS = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=${NUMBER_OF_VIDEOS}`;
 
 export const RELATED_VIDEOS =
-  'https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=';
+  "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=";
 export const commentData = [
   {
-    id: '1',
-    name: 'John',
+    id: "1",
+    name: "John",
     url: proPic4,
-    comment: 'Nice video👍 ',
+    comment: "Nice video👍 ",
     replies: [
       {
-        id: '2',
-        name: 'chris',
+        id: "2",
+        name: "chris",
         url: proPic2,
-        comment: 'cant agree more',
+        comment: "cant agree more",
         replies: [
           {
-            id: '3',
-            name: 'jasir',
+            id: "3",
+            name: "jasir",
             url: proPic3,
-            comment: 'chris have you seen this before',
+            comment: "chris have you seen this before",
             replies: [],
           },
           {
-            id: '4',
-            name: 'luther',
+            id: "4",
+            name: "luther",
             url: proPic1,
-            comment: 'chris make a video',
+            comment: "chris make a video",
             replies: [],
           },
         ],
       },
       {
-        id: '5',
-        name: 'rohan',
+        id: "5",
+        name: "rohan",
         url: proPic5,
-        comment: 'fabulous',
+        comment: "fabulous",
         replies: [
           {
-            id: '6',
-            name: 'zuan',
+            id: "6",
+            name: "zuan",
             url: proPic6,
-            comment: 'i dont think so',
+            comment: "i dont think so",
             replies: [
               {
-                id: '7',
-                name: 'Mubashir',
+                id: "7",
+                name: "Mubashir",
                 url: proPic7,
-                comment: 'then go ahead and dislike it',
+                comment: "then go ahead and dislike it",
                 replies: [],
               },
             ],
           },
           {
-            id: '8',
-            name: 'sabir',
+            id: "8",
+            name: "sabir",
             url: proPic8,
-            comment: 'informative one✅',
+            comment: "informative one✅",
             replies: [],
           },
         ],
@@ -115,56 +115,56 @@ export const commentData = [
     ],
   },
   {
-    id: '9',
-    name: 'rayman',
+    id: "9",
+    name: "rayman",
     url: proPic9,
-    comment: 'superb😍',
+    comment: "superb😍",
     replies: [
       {
-        id: '10',
-        name: 'Mubaz',
+        id: "10",
+        name: "Mubaz",
         url: proPic10,
-        comment: 'what superb😍',
+        comment: "what superb😍",
         replies: [],
       },
     ],
   },
   {
-    id: '11',
-    name: 'Nevlie',
+    id: "11",
+    name: "Nevlie",
     url: proPic11,
-    comment: 'you should have done this in a better way',
+    comment: "you should have done this in a better way",
     replies: [
       {
-        id: '12',
-        name: 'Jazz',
+        id: "12",
+        name: "Jazz",
         url: proPic12,
-        comment: 'he done pretty well ',
+        comment: "he done pretty well ",
         replies: [
           {
-            id: '13',
-            name: 'mazz',
+            id: "13",
+            name: "mazz",
             url: proPic13,
-            comment: 'no i dont think so',
+            comment: "no i dont think so",
             replies: [
               {
-                id: '14',
-                name: 'Mubaz',
+                id: "14",
+                name: "Mubaz",
                 url: proPic10,
-                comment: 'who are you😒 ',
+                comment: "who are you😒 ",
                 replies: [
                   {
-                    id: '15',
-                    name: 'Nevlie',
+                    id: "15",
+                    name: "Nevlie",
                     ur: proPic11,
-                    comment: 'Nevlie once again',
+                    comment: "Nevlie once again",
                     replies: [],
                   },
                   {
-                    id: '16',
-                    name: 'jifri',
+                    id: "16",
+                    name: "jifri",
                     url: proPic16,
-                    comment: 'jifri here🙋',
+                    comment: "jifri here🙋",
                     replies: [],
                   },
                 ],
@@ -176,30 +176,30 @@ export const commentData = [
     ],
   },
   {
-    id: '17',
-    name: 'Jack',
+    id: "17",
+    name: "Jack",
     url: proPic17,
-    comment: 'fantastic🚀',
+    comment: "fantastic🚀",
     replies: [],
   },
   {
-    id: '18',
-    name: 'Ezra Rico',
+    id: "18",
+    name: "Ezra Rico",
     url: proPic18,
-    comment: 'enjoyy',
+    comment: "enjoyy",
     replies: [],
   },
   {
-    id: '19',
-    name: 'Lane',
+    id: "19",
+    name: "Lane",
     url: proPic19,
-    comment: 'hello everyone',
+    comment: "hello everyone",
     replies: [
       {
-        id: '20',
-        name: 'Ivan',
+        id: "20",
+        name: "Ivan",
         url: proPic20,
-        comment: 'haii everyone',
+        comment: "haii everyone",
         replies: [],
       },
     ],
@@ -207,104 +207,104 @@ export const commentData = [
 ];
 
 export let BUTTON_NAMES = [
-  { id: 1, name: 'All' },
-  { id: 2, name: 'Investement' },
-  { id: 3, name: 'Music' },
-  { id: 4, name: 'Mixes' },
-  { id: 5, name: 'BlockChain' },
-  { id: 6, name: 'Camera' },
-  { id: 7, name: 'Photography' },
-  { id: 8, name: 'Malayalam Cinema' },
-  { id: 9, name: 'Software Engineer' },
-  { id: 10, name: 'Web3' },
-  { id: 11, name: 'Crypto' },
-  { id: 12, name: 'Metaverse' },
+  { id: 1, name: "All" },
+  { id: 2, name: "Investement" },
+  { id: 3, name: "Music" },
+  { id: 4, name: "Mixes" },
+  { id: 5, name: "BlockChain" },
+  { id: 6, name: "Camera" },
+  { id: 7, name: "Photography" },
+  { id: 8, name: "Malayalam Cinema" },
+  { id: 9, name: "Software Engineer" },
+  { id: 10, name: "Web3" },
+  { id: 11, name: "Crypto" },
+  { id: 12, name: "Metaverse" },
 ];
 
 export const sideBarMenus = [
   {
     id: 1,
-    name: 'Home',
+    name: "Home",
     url: Home,
   },
   {
     id: 2,
-    name: 'Javascript',
+    name: "Javascript",
     url: JavascriptIcon,
   },
   {
     id: 3,
-    name: 'HTML',
+    name: "HTML",
     url: htmlLogo,
   },
   {
     id: 4,
-    name: 'CSS',
+    name: "CSS",
     url: CssLogo,
   },
   {
     id: 5,
-    name: 'Vue.js',
+    name: "Vue.js",
     url: vuejsIcon,
   },
   {
     id: 6,
-    name: 'React.js',
+    name: "React.js",
     url: reactIcon,
   },
   {
     id: 7,
-    name: 'Angular.js',
+    name: "Angular.js",
     url: AngularIcon,
   },
   {
     id: 8,
-    name: 'Node.js',
+    name: "Node.js",
     url: NodeLogo,
   },
   {
     id: 9,
-    name: 'Express.js',
+    name: "Express.js",
     url: expressLogo,
   },
   {
     id: 10,
-    name: 'MongoDB',
+    name: "MongoDB",
     url: mongoDb,
   },
   {
     id: 11,
-    name: 'Explore',
+    name: "Explore",
     url: null,
   },
   {
     id: 12,
-    name: 'Trending',
+    name: "Trending",
     url: Trending,
   },
   {
     id: 13,
-    name: 'Music',
+    name: "Music",
     url: music,
   },
   {
     id: 14,
-    name: 'Live',
+    name: "Live",
     url: liveIcon,
   },
   {
     id: 15,
-    name: 'Films',
+    name: "Films",
     url: films,
   },
   {
     id: 16,
-    name: 'News',
+    name: "News",
     url: news,
   },
   {
     id: 17,
-    name: 'sport',
+    name: "sport",
     url: sport,
   },
 ];

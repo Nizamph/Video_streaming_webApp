@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import CommentInputHandler from './CommentInputHandler';
-import CommentList from './CommentList';
-import Comments from './Comments';
-import { commentData } from '../../utils/constants';
-import { useSelector, useDispatch } from 'react-redux';
-import CommentCautionModal from './CommentCautionModal';
-import useTraverseTree from '../../utils/usetraverseTree';
-import { setShowCommentModal } from '../../reduxStore/commentSlice';
-import proPic from '../../youtubeIcons/propicRandom.png';
+import React, { useEffect, useState } from "react";
+import CommentInputHandler from "./CommentInputHandler";
+import CommentList from "./CommentList";
+import Comments from "./Comments";
+import { commentData } from "../../utils/constants";
+import { useSelector, useDispatch } from "react-redux";
+import CommentCautionModal from "./CommentCautionModal";
+import useTraverseTree from "../../utils/usetraverseTree";
+import { setShowCommentModal } from "../../reduxStore/commentSlice";
+import proPic from "../../youtubeIcons/propicRandom.png";
 const CommentContainer = () => {
   // const commentData = useSelector((store) => store.comment.commentsList);
   const deletCommentId = useSelector((store) => store.comment.deleteCommentId);
@@ -16,21 +16,21 @@ const CommentContainer = () => {
   const isModalShow = useSelector((store) => store.comment.showCommentModal);
   const { deleteNode, insertNode } = useTraverseTree();
   const onDeleteHandler = () => {
-    console.log('delete comment Id', deletCommentId);
+    console.log("delete comment Id", deletCommentId);
     let dataAfterDelete = deleteNode(comments, deletCommentId);
-    console.log('data after delete ', dataAfterDelete);
-    console.log('deleting from container');
+    console.log("data after delete ", dataAfterDelete);
+    console.log("deleting from container");
     setComments(dataAfterDelete);
     dispatch(setShowCommentModal(false));
   };
 
   const getInputComment = (value) => {
-    console.log('value from the input handler', value);
+    console.log("value from the input handler", value);
     setComments((prevState) => {
       return [
         {
           id: new Date().getTime(),
-          name: 'User',
+          name: "User",
           url: proPic,
           comment: value,
           replies: [],
@@ -40,14 +40,11 @@ const CommentContainer = () => {
     });
   };
   return (
-    <div className='w-full pl-2 flex flex-col justify-center relative'>
-      <div className='font-bold p-1'>Comments</div>
+    <div className="w-full pl-2 flex flex-col justify-center relative">
+      <div className="font-bold p-1 text-blue-400">Comments</div>
       {isModalShow && <CommentCautionModal onClick={onDeleteHandler} />}
       <CommentInputHandler getCommentText={getInputComment} />
-      <CommentList
-        commentData={comments}
-        setCommentData={setComments}
-      />
+      <CommentList commentData={comments} setCommentData={setComments} />
     </div>
   );
 };

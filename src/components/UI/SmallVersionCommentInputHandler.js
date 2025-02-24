@@ -1,15 +1,16 @@
-import { useState, useEffect } from 'react';
-import displayPic from '../../youtubeIcons/propicRandom.png';
-import { useDispatch, useSelector } from 'react-redux';
-import { addComment } from '../../reduxStore/commentSlice';
-import useTraverseTree from '../../utils/usetraverseTree';
+import { useState, useEffect } from "react";
+import displayPic from "../../youtubeIcons/propicRandom.png";
+import { useDispatch, useSelector } from "react-redux";
+import { addComment } from "../../reduxStore/commentSlice";
+import useTraverseTree from "../../utils/usetraverseTree";
+
 const SmallVersionCommentInputHandler = (props) => {
   const commentTextFromEdit = useSelector((store) => store.comment.commentText);
-
   const dispatch = useDispatch();
   const [disable, setDisable] = useState(true);
   const [isCommentFocussed, setIsCommentFocused] = useState(false);
-  const [typeComment, setTypeComment] = useState('');
+  const [typeComment, setTypeComment] = useState("");
+
   useEffect(() => {
     if (typeComment.length > 0) {
       setDisable(false);
@@ -35,41 +36,47 @@ const SmallVersionCommentInputHandler = (props) => {
   return (
     <>
       {props.showInput && (
-        <>
-          <div className='flex justify-start pt-2 '>
+        <div className="flex flex-col gap-2 p-4 bg-gray-800 rounded-lg shadow-lg">
+          {/* Input Field */}
+          <div className="flex items-center gap-3">
             <img
               src={displayPic}
-              alt='dp'
-              className='w-10 rounded-full mr-2'
+              alt="dp"
+              className="w-10 h-10 rounded-full border-2 border-blue-500"
             />
             <input
-              type='text'
-              className={` border-b-2 pl-2  ${
-                isCommentFocussed ? 'focus:outline-none' : ''
-              } border-gray-400 w-[60%]`}
-              placeholder='type a comment'
+              type="text"
+              className={`flex-1 p-2 bg-gray-700 text-white placeholder-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all`}
+              placeholder="Type a comment..."
+              value={typeComment}
               onChange={onChangeHandler}
               onFocus={() => setIsCommentFocused(true)}
             />
           </div>
-          <div className='w-4/6 flex justify-end'>
+
+          {/* Action Buttons */}
+          <div className="flex justify-end gap-2">
             <button
-              type='button'
-              className='p-1  text-xs px-3 m-2 bg-slate-200 rounded-full'
-              onClick={() => props.setShowInput(false)}>
-              cancel
+              type="button"
+              className="px-4 py-2 text-sm text-gray-300 hover:text-white transition-colors"
+              onClick={() => props.setShowInput(false)}
+            >
+              Cancel
             </button>
             <button
-              type='button'
+              type="button"
               disabled={disable}
-              className={`p-1  text-xs px-3 m-2 ${
-                disable ? 'bg-slate-100' : 'bg-blue-600 text-white'
-              }  rounded-full`}
-              onClick={props.commentSubmitHandler}>
-              comment
+              className={`px-4 py-2 text-sm rounded-full transition-all ${
+                disable
+                  ? "bg-gray-700 text-gray-400 cursor-not-allowed"
+                  : "bg-gradient-to-r from-blue-500 to-purple-500 text-white hover:opacity-90"
+              }`}
+              onClick={props.commentSubmitHandler}
+            >
+              Comment
             </button>
           </div>
-        </>
+        </div>
       )}
     </>
   );

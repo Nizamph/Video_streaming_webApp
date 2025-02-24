@@ -1,100 +1,113 @@
-import React from 'react';
-import ChatList from './ChatList';
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { addMessages } from '../../reduxStore/chatSlice';
-import proPic from '../../youtubeIcons/propicRandom.png';
-import displayPic from '../../youtubeIcons/profile-dp.jpg';
-import imogi from '../../youtubeIcons/imogi.png';
-import superChat from '../../youtubeIcons/superchat.png';
-import send from '../../youtubeIcons/send.png';
+import React, { useState } from "react";
+import ChatList from "./ChatList";
+import { useDispatch } from "react-redux";
+import { addMessages } from "../../reduxStore/chatSlice";
+import proPic from "../../youtubeIcons/propicRandom.png";
+import imogi from "../../youtubeIcons/imogi.png";
+import superChat from "../../youtubeIcons/superchat.png";
+import send from "../../youtubeIcons/send.png";
+
 const LiveChat = () => {
-  const [liveMessages, setliveMessages] = useState('');
+  const [liveMessages, setLiveMessages] = useState("");
   const [showLiveChat, setShowLiveChat] = useState(true);
   const dispatch = useDispatch();
 
-  console.log('live message', liveMessages);
-  return (
-    <div className='flex flex-col justify-center items-start w-full md:w-96'>
-      <div className='font-semibold border w-full md:w-11/12 flex justify-start items-center p-1 mt-4 rounded-t-lg border-slate-400'>
-        Live Chat
-      </div>
-      <div
-        className={
-          showLiveChat
-            ? `bg-gray-100 border w-full md:w-11/12 border-black h-[330px] max-h-[515px] relative overflow-y-scroll flex flex-col-reverse`
-            : `hidden`
-        }>
-        <ChatList />
-      </div>
-      <form
-        className='pt-2 flex flex-col justify-center border border-black w-full md:w-11/12 p-1 rounded-b-lg'
-        onSubmit={(e) => {
-          e.preventDefault();
-          dispatch(
-            addMessages({
-              name: 'User',
-              message: liveMessages,
-              image: proPic,
-            })
-          );
-          setliveMessages('');
-        }}>
-        {showLiveChat && (
-          <>
-            <div className='flex flex-col md:flex-row gap-2 items-start mt-4'>
-              <div>
-                <img
-                  alt='proPic'
-                  src={proPic}
-                  className='w-7 rounded-full'
-                />
-              </div>
-              <div className='md:w-64'>
-                <p className='font-semibold'>User</p>
-                <input
-                  type='text'
-                  onChange={(e) => setliveMessages(e.target.value)}
-                  value={liveMessages}
-                  className='border-b border-gray-400 p-1 w-full h-6 '
-                  placeholder='Type your message'
-                />
-              </div>
-            </div>
-            <div className='flex justify-between items-center p-3'>
-              <div className='flex gap-2'>
-                <button>
-                  <img
-                    src={imogi}
-                    className='w-5'
-                  />
-                </button>
-                <button>
-                  <img
-                    src={superChat}
-                    className='w-7'
-                  />
-                </button>
-              </div>
-              <div className='flex gap-2'>
-                <p>0/200</p>
-                <button>
-                  <img
-                    src={send}
-                    className='w-5'
-                  />
-                </button>
-              </div>
-            </div>
-          </>
-        )}
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (liveMessages.trim()) {
+      dispatch(
+        addMessages({
+          name: "User",
+          message: liveMessages,
+          image: proPic,
+        })
+      );
+      setLiveMessages("");
+    }
+  };
 
-        <button
-          className='hover:bg-gray-300 p-1 rounded-full font-semibold'
-          onClick={() => setShowLiveChat((prevState) => !prevState)}>
-          {showLiveChat ? 'Hide' : 'Show Chat'}
-        </button>
+  return (
+    <div className="flex flex-col justify-center items-start w-full md:w-96">
+      {/* Live Chat Header */}
+      <div className="w-full md:w-11/12 bg-gradient-to-r from-blue-500 to-purple-500 p-3 rounded-t-lg">
+        <h2 className="font-semibold text-white">Live Chat</h2>
+      </div>
+
+      {/* Chat Messages */}
+      <div
+        className={`w-full md:w-11/12 bg-gray-800 border border-gray-700 ${
+          showLiveChat ? "h-[330px] max-h-[515px]" : "h-0"
+        } overflow-y-scroll transition-all duration-300`}
+      >
+        {showLiveChat && <ChatList />}
+      </div>
+
+      {/* Chat Input Section */}
+      <form
+        className={`w-full md:w-11/12 bg-gray-800 border border-gray-700 rounded-b-lg p-4 ${
+          showLiveChat ? "block" : "hidden"
+        }`}
+        onSubmit={handleSubmit}
+      >
+        <div className="flex items-center gap-3">
+          <img
+            src={proPic}
+            alt="Profile"
+            className="w-8 h-8 rounded-full border-2 border-blue-500"
+          />
+          <input
+            type="text"
+            value={liveMessages}
+            onChange={(e) => setLiveMessages(e.target.value)}
+            placeholder="Type your message..."
+            className="flex-1 p-2 bg-gray-700 text-white placeholder-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+            maxLength={200}
+          />
+        </div>
+
+        {/* Chat Actions */}
+        <div className="flex justify-between items-center mt-3">
+          <div className="flex gap-3">
+            <button className="p-2 hover:bg-gray-700 rounded-full transition-colors">
+              <img
+                src={imogi}
+                alt="Emoji"
+                className="w-5 filter invert brightness-0 saturate-100 sepia-0 hue-rotate-180"
+              />
+            </button>
+            <button className="p-2 hover:bg-gray-700 rounded-full transition-colors">
+              <img
+                src={superChat}
+                alt="Super Chat"
+                className="w-6 filter invert brightness-0 saturate-100 sepia-0 hue-rotate-180"
+              />
+            </button>
+          </div>
+          <div className="flex items-center gap-3">
+            <span className="text-sm text-gray-400">
+              {liveMessages.length}/200
+            </span>
+            <button
+              type="submit"
+              className="p-2 hover:bg-gray-700 rounded-full transition-colors"
+            >
+              <img
+                src={send}
+                alt="Send"
+                className="w-5 filter invert brightness-0 saturate-100 sepia-0 hue-rotate-180"
+              />
+            </button>
+          </div>
+        </div>
       </form>
+
+      {/* Toggle Chat Button */}
+      <button
+        className="mt-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-full hover:opacity-90 transition-opacity"
+        onClick={() => setShowLiveChat((prevState) => !prevState)}
+      >
+        {showLiveChat ? "Hide Chat" : "Show Chat"}
+      </button>
     </div>
   );
 };
