@@ -33,7 +33,7 @@ const VideoCards = ({ videos }) => {
 
   return (
     <div
-      className={`group relative mt-2 pt-4 w-60 bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl shadow-2xl hover:shadow-neon hover:scale-105 transition-all duration-300 ease-in-out overflow-hidden`}
+      className={`group relative mt-2 pt-4 w-80 bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl shadow-2xl hover:shadow-neon hover:scale-105 transition-all duration-300 ease-in-out overflow-hidden`}
     >
       {/* Video Thumbnail with Hover Effect */}
       <div className="relative rounded-lg overflow-hidden">
