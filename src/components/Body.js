@@ -42,7 +42,7 @@ const Body = () => {
       {/* Main Content Area */}
       <div
         className={`flex-1 ml-0 transition-all duration-300 ease-in-out ${
-          showSidebar ? "md:ml-64" : "md:ml-0"
+          showSidebar ? "md:ml-36" : "md:ml-0"
         }`}
       >
         {/* Overlay for Sidebar Toggle (Mobile View) */}

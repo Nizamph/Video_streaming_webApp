@@ -27,7 +27,7 @@ const LiveChat = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-start w-full md:w-96">
+    <div className="flex flex-col justify-center items-start w-full lg:96 md:w-92">
       {/* Live Chat Header */}
       <div className="w-full md:w-11/12 bg-gradient-to-r from-blue-500 to-purple-500 p-3 rounded-t-lg">
         <h2 className="font-semibold text-white">Live Chat</h2>
